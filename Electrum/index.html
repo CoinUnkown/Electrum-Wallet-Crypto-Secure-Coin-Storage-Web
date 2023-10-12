@@ -1,0 +1,2593 @@
+<!DOCTYPE html> 
+<html lang="en">
+	<head>
+
+		<title>Bitcoin Signer Wallet-Free-Open Source,Crypto cold address,sign transaction offline,DEFI,DAPP,Litecoin,Dogecoin wallet-explorer</title>
+
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+		<meta name="keywords" content="bitcoin, wallet, multisig, multisignature, address, browser, segwit, javascript, js, broadcast, transaction, verify, decode" />
+		<meta name="description" content="A Bitcoin Wallet written in Javascript. Supports Multisig, SegWit, Custom Transactions, nLockTime and more!" />
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
+		<link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
+		<link rel="stylesheet" href="css/style.css" media="screen">
+		
+		<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="js/moment.min.js"></script>
+		<script type="text/javascript" src="js/transition.js"></script>
+		<script type="text/javascript" src="js/collapse.js"></script>
+
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
+
+		<script type="text/javascript" src="js/crypto-min.js"></script>
+		<script type="text/javascript" src="js/crypto-sha256.js"></script>
+		<script type="text/javascript" src="js/crypto-sha256-hmac.js"></script>
+		<script type="text/javascript" src="js/sha512.js"></script>
+		<script type="text/javascript" src="js/ripemd160.js"></script>
+		<script type="text/javascript" src="js/aes.js"></script>
+
+		<script type="text/javascript" src="js/qrcode.js"></script>
+		<script type="text/javascript" src="js/qcode-decoder.min.js"></script>
+		<script type="text/javascript" src="js/jsbn.js"></script>
+		<script type="text/javascript" src="js/ellipticcurve.js"></script>
+
+		<script type="text/javascript" src="js/coin.js"></script>
+		<script type="text/javascript" src="js/signer.js"></script>
+
+
+
+
+<script type="text/javascript">
+   var arrLang = {
+  'zh': {
+    '1.Create Transaction': '1.新建交易',
+    '2.Sign': '2.签名',
+    '3.Broadcast': '3.广播',
+    'Chain Settings': '设置',
+    'IOS': '苹果系统',
+    'How to use': '使用教程',
+    'Tools': '工具',
+    'Help': '帮助',
+    'Transaction': '新建交易',
+    'Use this page to create a raw transaction': '新建一笔交易',
+    'Your Address, WIF key, Redeem Script or Transaction ID': '您的钱包地址',
+    'Recipient Address': '接收者地址',
+    'Amount': '数量',
+    'Load': '加载',
+    'Advanced Options': '高级选项',
+    'Transaction Fee(Min:0.000001)': '交易费(最低:0.000001)',
+    'Create Transaction': '创建交易',
+    'Sign Transaction': '签名交易信息',
+    'Recommended offline': '推荐离线使用该功能',
+    'Private key': '私钥',
+    'Show/Hide': '显示/隐藏',
+    'Language': '语言',
+    'Sign Transaction Info': '为了防止私钥在网络上暴露，建议在未连接互联网的安卓、苹果或电脑设备上进行签名，实现离线签名。',
+    'Broadcast Your Transaction': '广播您的交易',
+    'into the Blockchain!': '到区块链！',
+    'Please enter the signed transaction code:': '请输入签名后的交易编码。',
+    'Settings': '设置',
+    'The first transaction will returned to you as change': '第一笔交易将作为找零退还给您。',
+    'The transaction below has been generated and encoded. It can be broadcasted once it has been signed.': '下面的交易已经生成并编码。一旦签名就可以广播。',
+    'Sign': '签名',
+    'Broadcast': '广播',
+    'The above transaction has been signed:': '上面的交易已签署:',
+    'Signed transaction': '已签署的交易',
+    'Send your Bitcoin in the safest way.': '以最安全的方式发送您的比特币。',
+    '100% Free,Open Source!Offline signature, the most secure Bitcoin transfer method': '100%免费、开源！离线签名，最安全的比特币转账方式',
+    'Start': '开始',
+    'Download the project file,unzip,then you can run the index.html locally with any browser on Windows,Linux,MAC OS...': '下载项目文件，解压，然后您可以在Windows、Linux、MAC OS 上的任何浏览器本地运行index.html...',
+    'Choose the cryptocurrency you want to use.': '选择您想要使用的加密货币。',
+    '1:Create transaction': '1：创建交易',
+    '2:Sign transaction,It is recommended to sign on an offline device.': '2：签名交易，建议在离线设备上签名。',
+    '3:Broadcast transaction': '3：广播交易',
+    'Donate Bitcoin:': '捐赠比特币:',
+    'Run on iPhone/iPad': '在iPhone/iPad上运行',
+    'on Windows,MAC,Linux,we just run index.html in browser online or offline,it doesnt need any addtional install.': '在Windows、MAC、Linux上，我们只需在浏览器中在线或离线运行index.html，不需要任何额外的安装。',
+    'You need prepare a MAC computer in order to transfer project files through airpdrop.': '您需要准备一台MAC电脑才能通过空投传输项目文件。',
+    '1.This project is HTML+JS, so we need download a HTML viewer from Appstore.you can also use other html viewer APP in APPStore': '1.本项目是HTML+JS，所以我们需要从Appstore下载一个HTML查看器。您也可以使用APPStore中的其他html查看器APP',
+    '2.drag project folder to our iPhone/iPad through Airdrop': '2.通过Airdrop将项目文件夹拖到我们的iPhone/iPad上',
+    '3.save folder to HTML Viewer': '3.将文件夹保存到HTML查看器',
+    '4.tab folder icon in HTML Viewer APP': '4.HTML Viewer APP中的tab文件夹图标',
+    '5.find index.html,and tab it.': '5.找到index.html，然后选择它。',
+    '6.Now we can run Signer on our iPhone and iPad Successfully!': '6.现在我们可以在iPhone和iPad上成功运行Signer了！',
+    'Tips:iPhone camera can directly scan QR codes offline': '温馨提示：iPhone相机可以直接离线扫描二维码',
+'7.If you want to sign offline, just turn on airplane mode.': '7.如果您想离线签名，只需打开手机的飞行模式即可。',
+'8.Still worried?turn off the WIFI permit of APP.': '8.还是有所担心？关闭这个APP的WIFI权限',
+
+    
+
+
+  },
+  'es': {
+    '1.Create Transaction': '1.Crear Transacción',
+    '2.Sign': '2.Firmar',
+    '3.Broadcast': '3.Transmitir',
+    'Chain Settings': 'Configuración de la Cadena',
+    'IOS': 'IOS',
+    'How to use': 'Cómo utilizar',
+    'Tools': 'Herramientas',
+    'Help': 'Ayuda',
+    'Transaction': 'Transacción',
+    'Use this page to create a raw transaction': 'Use esta página para crear una transacción en bruto',
+    'Your Address, WIF key, Redeem Script or Transaction ID': 'Su dirección, clave WIF, script de redención o ID de transacción',
+    'Recipient Address': 'Dirección del destinatario',
+    'Amount': 'Cantidad',
+    'Load': 'Cargar',
+    'Advanced Options': 'Opciones Avanzadas',
+    'Transaction Fee(Min:0.000001)': 'Tarifa de Transacción (Mín: 0.000001)',
+    'Create Transaction': 'Crear Transacción',
+    'Sign Transaction': 'Firmar Transacción',
+    'Recommended offline': 'Recomendado sin conexión',
+    'Private key': 'Clave privada',
+    'Show/Hide': 'Mostrar/Ocultar',
+    'Language': 'Idioma',
+    'Sign Transaction Info': 'Para evitar exponer la clave privada en la red, se recomienda firmar la transacción en un dispositivo Android, iOS o una computadora sin conexión a Internet, lo que permite una firma sin conexión.',
+    'Broadcast Your Transaction': 'Transmitir su transacción',
+    'into the Blockchain!': '¡en la Blockchain!',
+    'Please enter the signed transaction code:': 'Ingrese el código de transacción firmado:',
+    'Settings': 'Configuración',
+    'The first transaction will returned to you as change': 'La primera transacción se le devolverá como cambio',
+    'The transaction below has been generated and encoded. It can be broadcasted once it has been signed.': 'La transacción a continuación ha sido generada y codificada. Se puede transmitir una vez que ha sido firmada.',
+    'Sign': 'Firmar',
+    'Broadcast': 'Transmitir',
+    'The above transaction has been signed:': 'La transacción anterior ha sido firmada:',
+    'Signed transaction': 'Transacción firmada',
+    'Send your Bitcoin in the safest way.': 'Envía tus Bitcoin de la manera más segura.',
+    '100% Free,Open Source!Offline signature, the most secure Bitcoin transfer method': '100% Gratis, de código abierto. Firma sin conexión, el método de transferencia de Bitcoin más seguro.',
+    'Start': 'Comenzar',
+    'Download the project file,unzip,then you can run the index.html locally with any browser on Windows,Linux,MAC OS...': 'Descarga el archivo del proyecto, descomprímelo y luego puedes ejecutar el index.html localmente con cualquier navegador en Windows, Linux, MAC OS...',
+    'Choose the cryptocurrency you want to use.': 'Elige la criptomoneda que quieres usar.',
+    '1:Create transaction': '1: Crear transacción',
+    '2:Sign transaction,It is recommended to sign on an offline device.': '2: Firmar transacción. Se recomienda firmar en un dispositivo sin conexión.',
+    '3:Broadcast transaction': '3: Transmitir transacción',
+    'Donate Bitcoin:': 'Donar Bitcoin:',
+    'Run on iPhone/iPad': 'Ejecutar en iPhone/iPad',
+    'on Windows,MAC,Linux,we just run index.html in browser online or offline,it doesnt need any addtional install.': 'En Windows, MAC, Linux, simplemente ejecutamos index.html en el navegador en línea o fuera de línea, no necesita ninguna instalación adicional.',
+    'You need prepare a MAC computer in order to transfer project files through airpdrop.': 'Necesitas preparar una computadora MAC para transferir los archivos del proyecto mediante AirDrop.',
+    '1.This project is HTML+JS, so we need download a HTML viewer from Appstore.you can also use other html viewer APP in APPStore': '1. Este proyecto es HTML+JS, por lo que necesitamos descargar un visor HTML desde la App Store. También puedes usar otra aplicación visor HTML en la App Store.',
+    '2.drag project folder to our iPhone/iPad through Airdrop': '2. Arrastra la carpeta del proyecto a nuestro iPhone/iPad mediante AirDrop.',
+    '3.save folder to HTML Viewer': '3. Guarda la carpeta en el visor HTML.',
+    '4.tab folder icon in HTML Viewer APP': '4. Toca el icono de la carpeta en la aplicación visor HTML.',
+    '5.find index.html,and tab it.': '5. Encuentra index.html y tócalo.',
+    '6.Now we can run Signer on our iPhone and iPad Successfully!': '6. ¡Ahora podemos ejecutar Signer en nuestro iPhone y iPad correctamente!',
+    'Tips:iPhone camera can directly scan QR codes offline': 'Consejo: la cámara del iPhone puede escanear códigos QR directamente sin conexión.',
+        '7.If you want to sign offline, just turn on airplane mode.': '7.Si deseas firmar sin conexión, simplemente activa el modo avión.',
+    '8.Still worried?turn off the WIFI permit of APP.': '8.¿Todavía preocupado? Desactiva el permiso de WIFI de la aplicación.',
+  
+  },
+  'hi': {
+    // Hindi translations
+    '1.Create Transaction': '1.लेन-देन बनाएं',
+    '2.Sign': '2.हस्ताक्षर',
+    '3.Broadcast': '3.प्रसारण',
+    'Chain Settings': 'श्रृंखला सेटिंग्स',
+    'IOS': 'आईओएस',
+    'How to use': 'कैसे उपयोग करें',
+    'Tools': 'उपकरण',
+    'Help': 'सहायता',
+    'Transaction': 'लेन-देन',
+    'Use this page to create a raw transaction': 'एक कच्चे लेन-देन को बनाने के लिए इस पेज का उपयोग करें',
+    'Your Address, WIF key, Redeem Script or Transaction ID': 'आपका पता, WIF कुंजी, रिडीम स्क्रिप्ट या लेन-देन आईडी',
+    'Recipient Address': 'प्राप्तकर्ता का पता',
+    'Amount': 'राशि',
+    'Load': 'लोड करें',
+    'Advanced Options': 'उन्नत विकल्प',
+    'Transaction Fee(Min:0.000001)': 'लेन-देन शुल्क (न्यूनतम: 0.000001)',
+    'Create Transaction': 'लेन-देन बनाएं',
+    'Sign Transaction': 'लेन-देन हस्ताक्षर',
+    'Recommended offline': 'ऑफ़लाइन का सिफ़ारिश किया गया',
+    'Private key': 'निजी कुंजी',
+    'Show/Hide': 'दिखाएँ/छिपाएँ',
+    'Language': 'भाषा',
+    'Sign Transaction Info': 'निजी कुंजी को नेटवर्क पर उजागर करने से बचने के लिए, आपको साइन करने के लिए एंड्रॉयड, आईओएस या इंटरनेट से डिस्कनेक्टेड कंप्यूटर पर अद्वितीय हस्ताक्षर का उपयोग करने की सिफारिश की जाती है।',
+    'Broadcast Your Transaction': 'अपनी लेन-देन का प्रसारण करें',
+    'into the Blockchain!': 'ब्लॉकचेन में!',
+    'Please enter the signed transaction code:': 'कृपया हस्ताक्षरित लेन-देन कोड दर्ज करें:',
+    'Settings': 'सेटिंग्स',
+    'The first transaction will returned to you as change': 'पहली लेन-देन को आपको बदले के रूप में वापस किया जाएगा',
+    'The transaction below has been generated and encoded. It can be broadcasted once it has been signed.': 'नीचे दिए गए लेन-देन को उत्पन्न किया और एनकोड किया गया है। इसे हस्ताक्षर किए जाने के बाद प्रसारित किया जा सकता है।',
+    'Sign': 'हस्ताक्षर',
+    'Broadcast': 'प्रसारण',
+    'The above transaction has been signed:': 'ऊपर का लेन-देन हस्ताक्षर किया गया है:',
+    'Signed transaction': 'हस्ताक्षरित लेन-देन',
+    'Send your Bitcoin in the safest way.': 'सबसे सुरक्षित तरीके से अपने बिटकॉइन भेजें।',
+'100% Free,Open Source!Offline signature, the most secure Bitcoin transfer method': '100% मुफ्त, ओपन सोर्स! ऑफ़लाइन हस्ताक्षर, सबसे सुरक्षित बिटकॉइन स्थानांतरण विधि।',
+'Start': 'शुरू करें',
+'Download the project file,unzip,then you can run the index.html locally with any browser on Windows,Linux,MAC OS...': 'परियोजना फ़ाइल डाउनलोड करें, अनज़िप करें, फिर आप Windows, Linux, MAC OS पर किसी भी ब्राउज़र के साथ स्थानीय रूप से index.html चला सकते हैं...',
+'Choose the cryptocurrency you want to use.': 'वह क्रिप्टोकरेंसी चुनें जिसे आप उपयोग करना चाहते हैं।',
+'1:Create transaction': '1:लेन-देन बनाएं',
+'2:Sign transaction,It is recommended to sign on an offline device.': '2:लेन-देन के लिए हस्ताक्षर करें, ऑफ़लाइन उपकरण पर हस्ताक्षर करने की सलाह दी जाती है।',
+'3:Broadcast transaction': '3:लेन-देन प्रसारित करें',
+'Donate Bitcoin:': 'बिटकॉइन दान करें:',
+'Run on iPhone/iPad': 'iPhone/iPad पर चलाएं',
+'on Windows,MAC,Linux,we just run index.html in browser online or offline,it doesnt need any addtional install.': 'Windows, MAC, Linux पर हम केवल ब्राउज़र में ऑनलाइन या ऑफ़लाइन इंडेक्स.हैटीएमएल चलाते हैं, इसके लिए कोई अतिरिक्त स्थापना की आवश्यकता नहीं होती।',
+'You need prepare a MAC computer in order to transfer project files through airpdrop.': 'एयरड्रॉप के माध्यम से परियोजना फ़ाइलें स्थानांतरित करने के लिए आपको एक MAC कंप्यूटर की तैयारी करनी होगी।',
+'1.This project is HTML+JS, so we need download a HTML viewer from Appstore.you can also use other html viewer APP in APPStore': '1. यह परियोजना HTML+JS है, इसलिए हमें Appstore से एक HTML दर्शक डाउनलोड करने की आवश्यकता होगी। आप APPStore में अन्य HTML दर्शक APP का उपयोग भी कर सकते हैं।',
+'2.drag project folder to our iPhone/iPad through Airdrop': '2. एयरड्रॉप के माध्यम से परियोजना फ़ोल्डर को हमारे iPhone/iPad में खींचें।',
+'3.save folder to HTML Viewer': '3. फ़ोल्डर को HTML दर्शक में सहेजें',
+'4.tab folder icon in HTML Viewer APP': '4. HTML दर्शक ऐप में फ़ोल्डर आइकन पर क्लिक करें',
+'5.find index.html,and tab it.': '5. index.html खोजें और उस पर क्लिक करें।',
+'6.Now we can run Signer on our iPhone and iPad Successfully!': '6. अब हम अपने iPhone और iPad पर सफलतापूर्वक Signer चला सकते हैं!',
+'Tips:iPhone camera can directly scan QR codes offline': 'टिप्स: iPhone कैमरा सीधे ऑफ़लाइन QR कोड स्कैन कर सकता है।',
+ '7.If you want to sign offline, just turn on airplane mode.': '7.यदि आप ऑफ़लाइन हस्ताक्षर करना चाहते हैं, तो बस एयरप्लेन मोड चालू करें।',
+    '8.Still worried?turn off the WIFI permit of APP.': '8.फिर भी चिंतित हैं? ऐप की वाईफ़ाई अनुमति बंद कर दें।',
+
+  },
+
+
+  'bn': {
+    // Bengali translations
+    '1.Create Transaction': '১. লেনদেন তৈরি করুন',
+    '2.Sign': '২. স্বাক্ষর করুন',
+    '3.Broadcast': '৩. প্রচার করুন',
+    'Chain Settings': 'চেইন সেটিংস',
+    'IOS': 'আইওএস',
+    'How to use': 'কিভাবে ব্যবহার করবেন',
+    'Tools': 'টুলস',
+    'Help': 'সাহায্য',
+    'Transaction': 'লেনদেন',
+    'Use this page to create a raw transaction': 'এই পৃষ্ঠাটি ব্যবহার করে একটি কাঁচা লেনদেন তৈরি করুন',
+    'Your Address, WIF key, Redeem Script or Transaction ID': 'আপনার ঠিকানা, WIF কী, মুক্তিযোগ্য স্ক্রিপ্ট বা লেনদেন আইডি',
+    'Recipient Address': 'প্রাপকের ঠিকানা',
+    'Amount': 'পরিমাণ',
+    'Load': 'লোড করুন',
+    'Advanced Options': 'উন্নত বিকল্পসমূহ',
+    'Transaction Fee(Min:0.000001)': 'লেনদেন ফি (সর্বনিম্ন: 0.000001)',
+    'Create Transaction': 'লেনদেন তৈরি করুন',
+    'Sign Transaction': 'লেনদেন স্বাক্ষর করুন',
+    'Recommended offline': 'অফলাইনে প্রস্তাবিত',
+    'Private key': 'ব্যক্তিগত কী',
+    'Show/Hide': 'দেখান/লুকান',
+    'Language': 'ভাষা',
+    'Sign Transaction Info': 'নেটওয়ার্কে ব্যক্তিগত কীটি প্রদর্শনের থেকে বিরত থাকার জন্য, আপনাকে অফলাইনে স্বাক্ষর করার জন্য অ্যান্ড্রয়েড, আইওএস অথবা ইন্টারনেটে সংযুক্ত না করা কম্পিউটারে প্রস্তাবিত স্বাক্ষর ব্যবহার করা সুপারিশ করা হয়।',
+    'Broadcast Your Transaction': 'আপনার লেনদেন প্রচার করুন',
+    'into the Blockchain!': 'ব্লকচেইনে!',
+    'Please enter the signed transaction code:': 'দয়া করে স্বাক্ষরিত লেনদেন কোড প্রবেশ করুন:',
+    'Settings': 'সেটিংস',
+    'The first transaction will returned to you as change': 'প্রথম লেনদেনটি আপনাকে পরিবর্তনের জন্য ফিরিয়ে দেওয়া হবে',
+    'The transaction below has been generated and encoded. It can be broadcasted once it has been signed.': 'নীচের লেনদেনটি উৎপন্ন করা হয়েছে এবং এনকোড করা হয়েছে। এটি স্বাক্ষরিত হলে প্রচারিত করা যাবে।',
+    'Sign': 'স্বাক্ষর',
+    'Broadcast': 'প্রচার',
+    'The above transaction has been signed:': 'উপরের লেনদেনটি স্বাক্ষরিত হয়েছে:',
+    'Signed transaction': 'স্বাক্ষরিত লেনদেন',
+    'Send your Bitcoin in the safest way.': 'সবচেয়ে নিরাপদ উপায়ে আপনার বিটকয়েন পাঠান।',
+'100% Free,Open Source!Offline signature, the most secure Bitcoin transfer method': '100% বিনামূল্যে, ওপেন সোর্স! অফলাইন স্বাক্ষর, সর্বাধিক নিরাপদ বিটকয়েন স্থানান্তর পদ্ধতি।',
+'Start': 'শুরু করুন',
+'Download the project file,unzip,then you can run the index.html locally with any browser on Windows,Linux,MAC OS...': 'প্রকল্প ফাইলটি ডাউনলোড করুন, আনজিপ করুন, তারপর আপনি Windows, Linux, MAC OS এর যে কোনও ব্রাউজার দিয়ে স্থানীয়ভাবে index.html চালাতে পারেন...',
+'Choose the cryptocurrency you want to use.': 'আপনি যে ক্রিপ্টোকারেন্সি ব্যবহার করতে চান তা নির্বাচন করুন।',
+'1:Create transaction': '1:লেনদেন তৈরি করুন',
+'2:Sign transaction,It is recommended to sign on an offline device.': '2:লেনদেনের জন্য স্বাক্ষর করুন, অফলাইন ডিভাইসে স্বাক্ষর করাটি সুপারিশ করা হয়।',
+'3:Broadcast transaction': '3:লেনদেন প্রচার করুন',
+'Donate Bitcoin:': 'বিটকয়েন দান করুন:',
+'Run on iPhone/iPad': 'iPhone/iPad এ চালান',
+'on Windows,MAC,Linux,we just run index.html in browser online or offline,it doesnt need any addtional install.': 'Windows, MAC, Linux উইন্ডোজ,ম্যাক, লিনাক্স তে আমরা ইন্টারনেট সংযোগ থাকলেও অফলাইন অবস্থায় প্রথম যেই অথবা এখানে কোনো অতিরিক্ত অনুষ্ঠানিক প্রতিষ্ঠান প্রয়োজন হয়না।',
+'You need prepare a MAC computer in order to transfer project files through airpdrop.': 'আপনাকে প্রকল্প ফাইলগুলি এয়ারড্রপের মাধ্যমে স্থানান্তর করতে ম্যাক কম্পিউটারটি প্রস্তুত করতে হবে।',
+'1.This project is HTML+JS, so we need download a HTML viewer from Appstore.you can also use other html viewer APP in APPStore': '1.এই প্রকল্পটি এইচটিএমএল+জেএস, সুতরাং আমাদেরকে অ্যাপস্টোর থেকে একটি এইচটিএমএল ভিউয়ায়ের ডাউনলোড করতে হবে। আপনি অ্যাপস্টোরের অন্যান্য এইচটিএমএল ভিউয়ায়ের অ্যাপসটি ব্যবহার করতেও পারেন।',
+'2.drag project folder to our iPhone/iPad through Airdrop': '2.এয়ারড্রপের মাধ্যমে প্রকল্প ফোল্ডারটি আমাদের আইফোন/আইপ্যাডে টেনে নিন',
+'3.save folder to HTML Viewer': '3.HTML ভিউয়ায়ের জন্য ফোল্ডারটি সংরক্ষণ করুন',
+'4.tab folder icon in HTML Viewer APP': '4.HTML ভিউয়ায়ের এ্যাপটিতে ফোল্ডার আইকন ট্যাব করুন',
+'5.find index.html,and tab it.': '5.index.html খুঁজে বের করুন, এবং ট্যাব করুন।',
+'6.Now we can run Signer on our iPhone and iPad Successfully!': '6.এখন আমরা আমাদের আইফোন এবং আইপ্যাডে Signer সফলভাবে চালাতে পারি!',
+'Tips:iPhone camera can directly scan QR codes offline': 'টিপস: iPhone ক্যামেরা অফলাইনে সরাসরি QR কোড স্ক্যান করতে পারে।',
+    '7.If you want to sign offline, just turn on airplane mode.': '7.আপনি যদি অফলাইনে স্বাক্ষর করতে চান, তবে কেবলমাত্র বিমান মোড চালু করুন।',
+    '8.Still worried?turn off the WIFI permit of APP.': '8.এখনও চিন্তিত? অ্যাপ এর ওয়াইফাই অনুমতি বন্ধ করুন।',
+  },
+  'pt': {
+    // Portuguese translations
+    '1.Create Transaction': '1. Criar Transação',
+    '2.Sign': '2. Assinar',
+    '3.Broadcast': '3. Transmitir',
+    'Chain Settings': 'Configurações da Cadeia',
+    'IOS': 'IOS',
+    'How to use': 'Como utilizar',
+    'Tools': 'Ferramentas',
+    'Help': 'Ajuda',
+    'Transaction': 'Transação',
+    'Use this page to create a raw transaction': 'Utilize esta página para criar uma transação em bruto',
+    'Your Address, WIF key, Redeem Script or Transaction ID': 'Seu Endereço, Chave WIF, Script de Resgate ou ID da Transação',
+    'Recipient Address': 'Endereço do Destinatário',
+    'Amount': 'Quantidade',
+    'Load': 'Carregar',
+    'Advanced Options': 'Opções Avançadas',
+    'Transaction Fee(Min:0.000001)': 'Taxa de Transação (Mín: 0.000001)',
+    'Create Transaction': 'Criar Transação',
+    'Sign Transaction': 'Assinar Transação',
+    'Recommended offline': 'Recomendado offline',
+    'Private key': 'Chave Privada',
+    'Show/Hide': 'Mostrar/Ocultar',
+    'Language': 'Idioma',
+    'Sign Transaction Info': 'Para evitar expor a chave privada na rede, recomenda-se assinar a transação em um dispositivo Android, iOS ou um computador desconectado da internet, possibilitando uma assinatura offline.',
+    'Broadcast Your Transaction': 'Transmitir sua Transação',
+    'into the Blockchain!': 'para a Blockchain!',
+    'Please enter the signed transaction code:': 'Por favor, digite o código da transação assinada:',
+    'Settings': 'Configurações',
+    'The first transaction will returned to you as change': 'A primeira transação será retornada para você como troco',
+    'The transaction below has been generated and encoded. It can be broadcasted once it has been signed.': 'A transação abaixo foi gerada e codificada. Ela pode ser transmitida assim que for assinada.',
+    'Sign': 'Assinar',
+    'Broadcast': 'Transmitir',
+    'The above transaction has been signed:': 'A transação acima foi assinada:',
+    'Signed transaction': 'Transação assinada',
+    'Send your Bitcoin in the safest way.': 'Envie seus Bitcoins da maneira mais segura.',
+'100% Free,Open Source!Offline signature, the most secure Bitcoin transfer method': '100% Grátis, Código Aberto! Assinatura offline, o método de transferência de Bitcoin mais seguro.',
+'Start': 'Iniciar',
+'Download the project file,unzip,then you can run the index.html locally with any browser on Windows,Linux,MAC OS...': 'Baixe o arquivo do projeto, descompacte e você poderá executar o arquivo index.html localmente em qualquer navegador no Windows, Linux, MAC OS...',
+'Choose the cryptocurrency you want to use.': 'Escolha a criptomoeda que deseja usar.',
+'1:Create transaction': '1:Criar transação',
+'2:Sign transaction,It is recommended to sign on an offline device.': '2:Assinar transação, é recomendado assinar em um dispositivo offline.',
+'3:Broadcast transaction': '3:Transmitir transação',
+'Donate Bitcoin:': 'Doe Bitcoin:',
+'Run on iPhone/iPad': 'Executar no iPhone/iPad',
+'on Windows,MAC,Linux,we just run index.html in browser online or offline,it doesnt need any addtional install.': 'No Windows, MAC, Linux, executamos o arquivo index.html no navegador online ou offline, não sendo necessário qualquer instalação adicional.',
+'You need prepare a MAC computer in order to transfer project files through airpdrop.': 'Você precisa preparar um computador MAC para transferir os arquivos do projeto por meio do AirDrop.',
+'1.This project is HTML+JS, so we need download a HTML viewer from Appstore.you can also use other html viewer APP in APPStore': '1.Este projeto é HTML+JS, portanto, precisamos baixar um visualizador de HTML na App Store. Você também pode usar outro aplicativo de visualização de HTML na App Store.',
+'2.drag project folder to our iPhone/iPad through Airdrop': '2.Arraste a pasta do projeto para o iPhone/iPad por meio do AirDrop.',
+'3.save folder to HTML Viewer': '3.Salve a pasta no Visualizador de HTML.',
+'4.tab folder icon in HTML Viewer APP': '4.Toque no ícone da pasta no aplicativo Visualizador de HTML.',
+'5.find index.html,and tab it.': '5.Encontre o index.html e toque nele.',
+'6.Now we can run Signer on our iPhone and iPad Successfully!': '6.Agora podemos executar o Signer com sucesso no nosso iPhone e iPad!',
+'Tips:iPhone camera can directly scan QR codes offline': 'Dicas: A câmera do iPhone pode escanear códigos QR diretamente offline.',
+ '7.If you want to sign offline, just turn on airplane mode.': '7.Se quiser assinar offline, basta ativar o modo avião.',
+    '8.Still worried?turn off the WIFI permit of APP.': '8.Ainda está preocupado? Desligue a permissão de WI-FI do APP.',
+
+
+  },
+  'ru': {
+    // Russian translations
+    '1.Create Transaction': '1. Создать транзакцию',
+    '2.Sign': '2. Подписать',
+    '3.Broadcast': '3. Отправить',
+    'Chain Settings': 'Настройки цепи',
+    'IOS': 'IOS',
+    'How to use': 'Как использовать',
+    'Tools': 'Инструменты',
+    'Help': 'Помощь',
+    'Transaction': 'Транзакция',
+    'Use this page to create a raw transaction': 'Используйте эту страницу для создания необработанной транзакции',
+    'Your Address, WIF key, Redeem Script or Transaction ID': 'Ваш адрес, ключ WIF, сценарий выкупа или идентификатор транзакции',
+    'Recipient Address': 'Адрес получателя',
+    'Amount': 'Сумма',
+    'Load': 'Загрузить',
+    'Advanced Options': 'Дополнительные опции',
+    'Transaction Fee(Min:0.000001)': 'Комиссия за транзакцию (Мин: 0.000001)',
+    'Create Transaction': 'Создать транзакцию',
+    'Sign Transaction': 'Подписать транзакцию',
+    'Recommended offline': 'Рекомендуется офлайн',
+    'Private key': 'Приватный ключ',
+    'Show/Hide': 'Показать/Скрыть',
+    'Language': 'Язык',
+    'Sign Transaction Info': 'Для защиты приватного ключа от раскрытия в сети рекомендуется подписывать транзакции на устройстве Android, iOS или компьютере, не подключенном к интернету, обеспечивая офлайн-подпись.',
+    'Broadcast Your Transaction': 'Отправить вашу транзакцию',
+    'into the Blockchain!': 'в блокчейн!',
+    'Please enter the signed transaction code:': 'Пожалуйста, введите код подписанной транзакции:',
+    'Settings': 'Настройки',
+    'The first transaction will returned to you as change': 'Первая транзакция будет возвращена вам в виде сдачи',
+    'The transaction below has been generated and encoded. It can be broadcasted once it has been signed.': 'Нижеприведенная транзакция была создана и закодирована. Она может быть отправлена после подписи.',
+    'Sign': 'Подписать',
+    'Broadcast': 'Отправить',
+    'The above transaction has been signed:': 'Вышеуказанная транзакция была подписана:',
+    'Signed transaction': 'Подписанная транзакция',
+    'Send your Bitcoin in the safest way.': 'Отправьте свои биткойны самым безопасным способом.',
+'100% Free,Open Source!Offline signature, the most secure Bitcoin transfer method': '100% Бесплатно, Открытый исходный код! Оффлайн-подпись, самый безопасный способ передачи биткойнов.',
+'Start': 'Старт',
+'Download the project file,unzip,then you can run the index.html locally with any browser on Windows,Linux,MAC OS...': 'Загрузите файл проекта, распакуйте его, затем вы сможете запустить index.html локально с любым браузером на Windows, Linux, MAC OS...',
+'Choose the cryptocurrency you want to use.': 'Выберите криптовалюту, которую хотите использовать.',
+'1:Create transaction': '1:Создать транзакцию',
+'2:Sign transaction,It is recommended to sign on an offline device.': '2:Подписать транзакцию, рекомендуется подписывать на оффлайн-устройстве.',
+'3:Broadcast transaction': '3:Транслировать транзакцию',
+'Donate Bitcoin:': 'Пожертвовать биткойн:',
+'Run on iPhone/iPad': 'Запустить на iPhone/iPad',
+'on Windows,MAC,Linux,we just run index.html in browser online or offline,it doesnt need any addtional install.': 'На Windows, MAC, Linux мы просто запускаем index.html в браузере онлайн или оффлайн, это не требует дополнительной установки.',
+'You need prepare a MAC computer in order to transfer project files through airpdrop.': 'Вам нужно подготовить компьютер MAC, чтобы передать файлы проекта через AirDrop.',
+'1.This project is HTML+JS, so we need download a HTML viewer from Appstore.you can also use other html viewer APP in APPStore': '1.Этот проект является HTML+JS, поэтому нам нужно загрузить просмотрщик HTML из Appstore. Вы также можете использовать другое приложение для просмотра HTML в APPStore.',
+'2.drag project folder to our iPhone/iPad through Airdrop': '2.Перетащите папку проекта на наш iPhone/iPad через AirDrop.',
+'3.save folder to HTML Viewer': '3.Сохраните папку в HTML Viewer',
+'4.tab folder icon in HTML Viewer APP': '4.Перейдите на иконку папки в приложении HTML Viewer',
+'5.find index.html,and tab it.': '5.Найдите index.html и нажмите на него.',
+'6.Now we can run Signer on our iPhone and iPad Successfully!': '6.Теперь мы успешно можем запустить Signer на нашем iPhone и iPad!',
+'Tips:iPhone camera can directly scan QR codes offline': 'Совет: камера iPhone может непосредственно сканировать QR-коды оффлайн.',
+    '7.If you want to sign offline, just turn on airplane mode.': '7.Если вы хотите подписаться оффлайн, просто включите режим "в самолете".',
+    '8.Still worried?turn off the WIFI permit of APP.': '8.Все еще беспокоитесь? Выключите разрешение на WI-FI приложения.',
+  },
+  'ja': {
+    // Japanese translations
+    '1.Create Transaction': '1. トランザクションを作成する',
+    '2.Sign': '2. 署名する',
+    '3.Broadcast': '3. ブロードキャストする',
+    'Chain Settings': 'チェーンの設定',
+    'IOS': 'IOS',
+    'How to use': '使い方',
+    'Tools': 'ツール',
+    'Help': 'ヘルプ',
+    'Transaction': 'トランザクション',
+    'Use this page to create a raw transaction': 'このページを使って生のトランザクションを作成します',
+    'Your Address, WIF key, Redeem Script or Transaction ID': 'あなたのアドレス、WIFキー、償還スクリプト、またはトランザクションID',
+    'Recipient Address': '受取人のアドレス',
+    'Amount': '金額',
+    'Load': 'ロード',
+    'Advanced Options': '高度なオプション',
+    'Transaction Fee(Min:0.000001)': 'トランザクション手数料（最小：0.000001）',
+    'Create Transaction': 'トランザクションを作成する',
+    'Sign Transaction': 'トランザクションに署名する',
+    'Recommended offline': 'オフラインでの使用をおすすめします',
+    'Private key': 'プライベートキー',
+    'Show/Hide': '表示/非表示',
+    'Language': '言語',
+    'Sign Transaction Info': 'プライベートキーをネットワーク上で公開しないために、Android、iOS、またはインターネットに接続されていないコンピュータでトランザクションに署名することをおすすめします。',
+    'Broadcast Your Transaction': 'トランザクションをブロードキャストする',
+    'into the Blockchain!': 'ブロックチェーンに！',
+    'Please enter the signed transaction code:': '署名されたトランザクションコードを入力してください：',
+    'Settings': '設定',
+    'The first transaction will returned to you as change': '最初のトランザクションはお釣りとして返金されます',
+    'The transaction below has been generated and encoded. It can be broadcasted once it has been signed.': '以下のトランザクションが生成され、エンコードされました。署名されるとブロードキャストできます。',
+    'Sign': '署名',
+    'Broadcast': 'ブロードキャスト',
+    'The above transaction has been signed:': '上記のトランザクションは署名されました：',
+    'Signed transaction': '署名済みトランザクション',
+    'Send your Bitcoin in the safest way.': '最も安全な方法でビットコインを送信してください。',
+'100% Free,Open Source!Offline signature, the most secure Bitcoin transfer method': '100% 無料、オープンソース！オフライン署名、最も安全なビットコイン転送方法',
+'Start': '開始',
+'Download the project file,unzip,then you can run the index.html locally with any browser on Windows,Linux,MAC OS...': 'プロジェクトファイルをダウンロードし、解凍してから、Windows、Linux、MAC OS 上のどのブラウザでも index.html をローカルで実行できます...',
+'Choose the cryptocurrency you want to use.': '使用する暗号通貨を選択してください。',
+'1:Create transaction': '1:トランザクションの作成',
+'2:Sign transaction,It is recommended to sign on an offline device.': '2:トランザクションに署名するには、オフラインデバイスで署名することを推奨します。',
+'3:Broadcast transaction': '3:トランザクションのブロードキャスト',
+'Donate Bitcoin:': 'ビットコインを寄付する：',
+'Run on iPhone/iPad': 'iPhone/iPad で実行',
+'on Windows,MAC,Linux,we just run index.html in browser online or offline,it doesnt need any addtional install.': 'Windows、MAC、Linux 上では、オンラインまたはオフラインでブラウザで index.html を実行するだけで、追加のインストールは必要ありません。',
+'You need prepare a MAC computer in order to transfer project files through airpdrop.': 'プロジェクトファイルをAirDropを介して転送するためには、MACコンピュータを用意する必要があります。',
+'1.This project is HTML+JS, so we need download a HTML viewer from Appstore.you can also use other html viewer APP in APPStore': '1.このプロジェクトはHTML+JSですので、AppstoreからHTMLビューアをダウンロードする必要があります。また、Appstoreの他のHTMLビューアアプリを使用することもできます。',
+'2.drag project folder to our iPhone/iPad through Airdrop': '2.Airdropを介してプロジェクトフォルダをiPhone/iPadにドラッグします',
+'3.save folder to HTML Viewer': '3.フォルダをHTMLビューアに保存します',
+'4.tab folder icon in HTML Viewer APP': '4.HTMLビューアアプリでフォルダアイコンをタップします',
+'5.find index.html,and tab it.': '5.index.html を見つけてタップします。',
+'6.Now we can run Signer on our iPhone and iPad Successfully!': '6.これで、iPhoneとiPadでSignerを正常に実行できます！',
+'Tips:iPhone camera can directly scan QR codes offline': 'ヒント：iPhoneのカメラはオフラインで直接QRコードをスキャンできます。',
+ '7.If you want to sign offline, just turn on airplane mode.': '7.オフラインで署名する場合は、飛行機モードをオンにするだけです。',
+    '8.Still worried?turn off the WIFI permit of APP.': '8.まだ心配ですか？アプリのWI-FI許可をオフにしてください。',
+
+  },
+  'tr': {
+    // Turkish translations
+    '1.Create Transaction': '1. İşlem Oluştur',
+    '2.Sign': '2. İmzala',
+    '3.Broadcast': '3. Yayınla',
+    'Chain Settings': 'Zincir Ayarları',
+    'IOS': 'IOS',
+    'How to use': 'Nasıl kullanılır',
+    'Tools': 'Araçlar',
+    'Help': 'Yardım',
+    'Transaction': 'İşlem',
+    'Use this page to create a raw transaction': 'Bu sayfayı kullanarak ham bir işlem oluşturun',
+    'Your Address, WIF key, Redeem Script or Transaction ID': 'Adresiniz, WIF anahtarınız, Geri Alma Betiği veya İşlem Kimliği',
+    'Recipient Address': 'Alıcı Adresi',
+    'Amount': 'Miktar',
+    'Load': 'Yükle',
+    'Advanced Options': 'Gelişmiş Seçenekler',
+    'Transaction Fee(Min:0.000001)': 'İşlem Ücreti (Min: 0.000001)',
+    'Create Transaction': 'İşlem Oluştur',
+    'Sign Transaction': 'İşlemi İmzala',
+    'Recommended offline': 'Çevrimdışı kullanım önerilir',
+    'Private key': 'Özel Anahtar',
+    'Show/Hide': 'Göster/Gizle',
+    'Language': 'Dil',
+    'Sign Transaction Info': 'Özel anahtarınızı ağda ifşa etmemek için işlemi bir Android, iOS veya internete bağlı olmayan bir bilgisayarda imzalamanız önerilir.',
+    'Broadcast Your Transaction': 'İşleminizi Yayınla',
+    'into the Blockchain!': 'blok zincire!',
+    'Please enter the signed transaction code:': 'Lütfen imzalanmış işlem kodunu girin:',
+    'Settings': 'Ayarlar',
+    'The first transaction will returned to you as change': 'İlk işlem size değişim olarak iade edilecektir',
+    'The transaction below has been generated and encoded. It can be broadcasted once it has been signed.': 'Aşağıdaki işlem oluşturuldu ve kodlandı. İmzalandığında yayınlanabilir.',
+    'Sign': 'İmzala',
+    'Broadcast': 'Yayınla',
+    'The above transaction has been signed:': 'Yukarıdaki işlem imzalanmıştır:',
+    'Signed transaction': 'İmzalı işlem',
+    'Send your Bitcoin in the safest way.': 'Bitcoin inizi en güvenli şekilde gönderin.',
+'100% Free,Open Source!Offline signature, the most secure Bitcoin transfer method': '100% Ücretsiz, Açık Kaynak! Çevrimdışı imza, en güvenli Bitcoin transfer yöntemi',
+'Start': 'Başlat',
+'Download the project file,unzip,then you can run the index.html locally with any browser on Windows,Linux,MAC OS...': 'Proje dosyasını indirin, açın, ardından index.html i Windows, Linux, MAC OS üzerinde herhangi bir tarayıcıda yerel olarak çalıştırabilirsiniz...',
+'Choose the cryptocurrency you want to use.': 'Kullanmak istediğiniz kripto para birimini seçin.',
+'1:Create transaction': '1:İşlem oluştur',
+'2:Sign transaction,It is recommended to sign on an offline device.': '2:İşlemi imzala, imzayı çevrimdışı bir cihazda yapmanız önerilir.',
+'3:Broadcast transaction': '3:İşlemi yayınla',
+'Donate Bitcoin:': 'Bitcoin Bağışla:',
+'Run on iPhone/iPad': 'iPhone/iPad de çalıştır',
+'on Windows,MAC,Linux,we just run index.html in browser online or offline,it doesnt need any addtional install.': 'Windows, MAC, Linux ta sadece tarayıcıda online veya çevrimdışı olarak index.html i çalıştırırız, ek bir kurulum gerekmez.',
+'You need prepare a MAC computer in order to transfer project files through airpdrop.': 'Proje dosyalarını AirDrop aracılığıyla aktarmak için bir MAC bilgisayar hazırlamanız gerekmektedir.',
+'1.This project is HTML+JS, so we need download a HTML viewer from Appstore.you can also use other html viewer APP in APPStore': '1.Bu proje HTML+JS olduğundan, Appstore dan bir HTML görüntüleyici indirmemiz gerekiyor. Ayrıca APPStore daki diğer HTML görüntüleyici uygulamalarını da kullanabilirsiniz.',
+'2.drag project folder to our iPhone/iPad through Airdrop': '2.AirDrop aracılığıyla projeyi iPhone/iPad e sürükleyin',
+'3.save folder to HTML Viewer': '3.Folder ı HTML Viewer a kaydedin',
+'4.tab folder icon in HTML Viewer APP': '4.HTML Viewer Uygulaması ndaki folder simgesine dokunun',
+'5.find index.html,and tab it.': '5.index.html i bulun ve üzerine dokunun.',
+'6.Now we can run Signer on our iPhone and iPad Successfully!': '6.Artık iPhone ve iPad imizde Signer ı başarıyla çalıştırabiliriz!',
+'Tips:iPhone camera can directly scan QR codes offline': 'İpucu: iPhone kamerası çevrimdışı QR kodlarını doğrudan tarayabilir.',
+    '7.If you want to sign offline, just turn on airplane mode.': '7.Çevrimdışı imza atmak isterseniz, sadece uçak modunu açın.',
+    '8.Still worried?turn off the WIFI permit of APP.': '8.Hala endişeleniyor musunuz? Uygulamanın WI-FI iznini kapatın.',
+
+  },
+  'ko': {
+    // Korean translations
+    '1.Create Transaction': '1. 거래 생성',
+    '2.Sign': '2. 서명',
+    '3.Broadcast': '3. 브로드캐스트',
+    'Chain Settings': '체인 설정',
+    'IOS': 'IOS',
+    'How to use': '사용 방법',
+    'Tools': '도구',
+    'Help': '도움말',
+    'Transaction': '거래',
+    'Use this page to create a raw transaction': '이 페이지를 사용하여 원시 거래를 생성합니다',
+    'Your Address, WIF key, Redeem Script or Transaction ID': '귀하의 주소, WIF 키, 교환 스크립트 또는 거래 ID',
+    'Recipient Address': '수신자 주소',
+    'Amount': '금액',
+    'Load': '로드',
+    'Advanced Options': '고급 옵션',
+    'Transaction Fee(Min:0.000001)': '거래 수수료(최소: 0.000001)',
+    'Create Transaction': '거래 생성',
+    'Sign Transaction': '거래 서명',
+    'Recommended offline': '오프라인 사용 권장',
+    'Private key': '개인 키',
+    'Show/Hide': '보이기/숨기기',
+    'Language': '언어',
+    'Sign Transaction Info': '개인 키가 네트워크에서 노출되지 않도록 Android, iOS 또는 인터넷에 연결되지 않은 컴퓨터에서 거래를 서명하는 것이 좋습니다.',
+    'Broadcast Your Transaction': '거래를 브로드캐스트',
+    'into the Blockchain!': '블록체인으로!',
+    'Please enter the signed transaction code:': '서명된 거래 코드를 입력하세요:',
+    'Settings': '설정',
+    'The first transaction will returned to you as change': '첫 번째 거래는 거스름돈으로 반환됩니다',
+    'The transaction below has been generated and encoded. It can be broadcasted once it has been signed.': '아래 거래가 생성되어 인코딩되었습니다. 서명된 후에 브로드캐스트할 수 있습니다.',
+    'Sign': '서명',
+    'Broadcast': '브로드캐스트',
+    'The above transaction has been signed:': '위의 거래가 서명되었습니다:',
+    'Signed transaction': '서명된 거래',
+    'Send your Bitcoin in the safest way.': '가장 안전한 방법으로 비트코인을 전송하세요.',
+'100% Free,Open Source!Offline signature, the most secure Bitcoin transfer method': '100% 무료, 오픈 소스! 오프라인 서명, 가장 안전한 비트코인 전송 방법',
+'Start': '시작',
+'Download the project file,unzip,then you can run the index.html locally with any browser on Windows,Linux,MAC OS...': '프로젝트 파일을 다운로드하고 압축 해제한 다음 Windows, Linux, MAC OS에서 어떤 브라우저로든 index.html을 로컬에서 실행할 수 있습니다...',
+'Choose the cryptocurrency you want to use.': '사용하고 싶은 암호화폐를 선택하세요.',
+'1:Create transaction': '1:거래 생성',
+'2:Sign transaction,It is recommended to sign on an offline device.': '2:거래에 서명하십시오. 오프라인 기기에서 서명하는 것이 좋습니다.',
+'3:Broadcast transaction': '3:거래 전파',
+'Donate Bitcoin:': '비트코인 기부:',
+'Run on iPhone/iPad': 'iPhone/iPad에서 실행',
+'on Windows,MAC,Linux,we just run index.html in browser online or offline,it doesnt need any addtional install.': 'Windows, MAC, Linux에서는 온라인 또는 오프라인으로 브라우저에서 index.html만 실행하면 추가 설치가 필요하지 않습니다.',
+'You need prepare a MAC computer in order to transfer project files through airpdrop.': '프로젝트 파일을 AirDrop을 통해 전송하려면 MAC 컴퓨터를 준비해야 합니다.',
+'1.This project is HTML+JS, so we need download a HTML viewer from Appstore.you can also use other html viewer APP in APPStore': '1.이 프로젝트는 HTML+JS이므로 Appstore에서 HTML 뷰어를 다운로드해야 합니다. 또한 APPStore에서 다른 HTML 뷰어 앱을 사용할 수도 있습니다.',
+'2.drag project folder to our iPhone/iPad through Airdrop': '2.AirDrop을 통해 프로젝트 폴더를 iPhone/iPad로 드래그합니다.',
+'3.save folder to HTML Viewer': '3.폴더를 HTML Viewer에 저장하세요.',
+'4.tab folder icon in HTML Viewer APP': '4.HTML Viewer 앱에서 폴더 아이콘을 탭하세요.',
+'5.find index.html,and tab it.': '5.index.html을 찾아 탭하세요.',
+'6.Now we can run Signer on our iPhone and iPad Successfully!': '6.이제 iPhone과 iPad에서 Signer를 성공적으로 실행할 수 있습니다!',
+'Tips:iPhone camera can directly scan QR codes offline': '팁: iPhone 카메라로 오프라인에서 직접 QR 코드를 스캔할 수 있습니다.',
+ '7.If you want to sign offline, just turn on airplane mode.': '7.오프라인에서 서명하려면 비행기 모드를 켜기만 하면 됩니다.',
+    '8.Still worried?turn off the WIFI permit of APP.': '8.아직 걱정이 되나요? 앱의 WI-FI 허용을 끄세요.',
+  },
+  'fr': {
+    // French translations
+    '1.Create Transaction': '1. Créer une transaction',
+    '2.Sign': '2. Signer',
+    '3.Broadcast': '3. Diffuser',
+    'Chain Settings': 'Paramètres de la chaîne',
+    'IOS': 'IOS',
+    'How to use': 'Comment utiliser',
+    'Tools': 'Outils',
+    'Help': 'Aide',
+    'Transaction': 'Transaction',
+    'Use this page to create a raw transaction': 'Utilisez cette page pour créer une transaction brute',
+    'Your Address, WIF key, Redeem Script or Transaction ID': 'Votre adresse, clé WIF, script de récupération ou ID de transaction',
+    'Recipient Address': 'Adresse du destinataire',
+    'Amount': 'Montant',
+    'Load': 'Charger',
+    'Advanced Options': 'Options avancées',
+    'Transaction Fee(Min:0.000001)': 'Frais de transaction (Min: 0.000001)',
+    'Create Transaction': 'Créer une transaction',
+    'Sign Transaction': 'Signer la transaction',
+    'Recommended offline': 'Recommandé hors ligne',
+    'Private key': 'Clé privée',
+    'Show/Hide': 'Afficher/Masquer',
+    'Language': 'Langue',
+    'Sign Transaction Info': 'Pour éviter de divulguer votre clé privée sur le réseau, il est recommandé de signer la transaction sur un appareil Android, iOS ou un ordinateur déconnecté d\'Internet, ce qui permet une signature hors ligne.',
+    'Broadcast Your Transaction': 'Diffuser votre transaction',
+    'into the Blockchain!': 'dans la blockchain !',
+    'Please enter the signed transaction code:': 'Veuillez entrer le code de transaction signée :',
+    'Settings': 'Paramètres',
+    'The first transaction will returned to you as change': 'La première transaction vous sera retournée en tant que monnaie rendue',
+    'The transaction below has been generated and encoded. It can be broadcasted once it has been signed.': 'La transaction ci-dessous a été générée et encodée. Elle peut être diffusée une fois qu\'elle a été signée.',
+    'Sign': 'Signer',
+    'Broadcast': 'Diffuser',
+    'The above transaction has been signed:': 'La transaction ci-dessus a été signée :',
+    'Signed transaction': 'Transaction signée',
+    'Send your Bitcoin in the safest way.': 'Envoyez vos Bitcoins de la manière la plus sûre.',
+'100% Free,Open Source!Offline signature, the most secure Bitcoin transfer method': '100% Gratuit, Open Source! Signature hors ligne, la méthode de transfert de Bitcoin la plus sécurisée',
+'Start': 'Démarrer',
+'Download the project file,unzip,then you can run the index.html locally with any browser on Windows,Linux,MAC OS...': 'Téléchargez le fichier du projet, décompressez-le, puis exécutez index.html localement avec n importe quel navigateur sur Windows, Linux, MAC OS...',
+'Choose the cryptocurrency you want to use.': 'Choisissez la cryptomonnaie que vous souhaitez utiliser.',
+'1:Create transaction': '1:Créer une transaction',
+'2:Sign transaction,It is recommended to sign on an offline device.': '2:Signer la transaction, il est recommandé de signer sur un appareil hors ligne.',
+'3:Broadcast transaction': '3:Diffuser la transaction',
+'Donate Bitcoin:': 'Faire un don Bitcoin :',
+'Run on iPhone/iPad': 'Exécuter sur iPhone/iPad',
+'on Windows,MAC,Linux,we just run index.html in browser online or offline,it doesnt need any addtional install.': 'Sur Windows, MAC, Linux, il suffit d exécuter index.html dans un navigateur en ligne ou hors ligne, aucune installation supplémentaire n est nécessaire.',
+'You need prepare a MAC computer in order to transfer project files through airpdrop.': 'Vous devez préparer un ordinateur MAC afin de transférer les fichiers du projet via AirDrop.',
+'1.This project is HTML+JS, so we need download a HTML viewer from Appstore.you can also use other html viewer APP in APPStore': '1.Ce projet est en HTML+JS, donc nous devons télécharger un visualiseur HTML depuis l Appstore. Vous pouvez également utiliser une autre application de visualisation HTML disponible dans l APPStore.',
+'2.drag project folder to our iPhone/iPad through Airdrop': '2.Faites glisser le dossier du projet vers notre iPhone/iPad via AirDrop.',
+'3.save folder to HTML Viewer': '3.Enregistrez le dossier dans le visualiseur HTML',
+'4.tab folder icon in HTML Viewer APP': '4.Sélectionnez l icône du dossier dans l application Visualiseur HTML.',
+'5.find index.html,and tab it.': '5.Trouvez index.html et sélectionnez-le.',
+'6.Now we can run Signer on our iPhone and iPad Successfully!': '6.Maintenant, nous pouvons exécuter Signer avec succès sur notre iPhone et iPad !',
+'Tips:iPhone camera can directly scan QR codes offline': 'Astuce : l appareil photo de l iPhone peut scanner directement les codes QR hors ligne.',
+    '7.If you want to sign offline, just turn on airplane mode.': '7.Si vous souhaitez signer hors ligne, activez simplement le mode avion.',
+    '8.Still worried?turn off the WIFI permit of APP.': '8.Toujours inquiet ? Désactivez l autorisation WIFI de l application.',
+
+  },
+  'de': {
+    // German translations
+    '1.Create Transaction': '1. Transaktion erstellen',
+    '2.Sign': '2. Signieren',
+    '3.Broadcast': '3. Übertragen',
+    'Chain Settings': 'Ketteneinstellungen',
+    'IOS': 'IOS',
+    'How to use': 'Anleitung',
+    'Tools': 'Werkzeuge',
+    'Help': 'Hilfe',
+    'Transaction': 'Transaktion',
+    'Use this page to create a raw transaction': 'Verwenden Sie diese Seite, um eine Rohtransaktion zu erstellen',
+    'Your Address, WIF key, Redeem Script or Transaction ID': 'Ihre Adresse, WIF-Schlüssel, Rückzahlungsskript oder Transaktions-ID',
+    'Recipient Address': 'Empfängeradresse',
+    'Amount': 'Betrag',
+    'Load': 'Laden',
+    'Advanced Options': 'Erweiterte Optionen',
+    'Transaction Fee(Min:0.000001)': 'Transaktionsgebühr (Min: 0,000001)',
+    'Create Transaction': 'Transaktion erstellen',
+    'Sign Transaction': 'Transaktion signieren',
+    'Recommended offline': 'Empfohlen offline',
+    'Private key': 'Privater Schlüssel',
+    'Show/Hide': 'Anzeigen/Ausblenden',
+    'Language': 'Sprache',
+    'Sign Transaction Info': 'Um zu verhindern, dass Ihr privater Schlüssel im Netzwerk veröffentlicht wird, wird empfohlen, die Transaktion auf einem Android-, iOS- oder nicht mit dem Internet verbundenen Computer zu signieren und eine Offline-Signatur zu verwenden.',
+    'Broadcast Your Transaction': 'Ihre Transaktion übertragen',
+    'into the Blockchain!': 'in die Blockchain!',
+    'Please enter the signed transaction code:': 'Bitte geben Sie den signierten Transaktionscode ein:',
+    'Settings': 'Einstellungen',
+    'The first transaction will returned to you as change': 'Die erste Transaktion wird Ihnen als Wechselgeld zurückgegeben',
+    'The transaction below has been generated and encoded. It can be broadcasted once it has been signed.': 'Die folgende Transaktion wurde generiert und codiert. Sie kann übertragen werden, sobald sie signiert wurde.',
+    'Sign': 'Signieren',
+    'Broadcast': 'Übertragen',
+    'The above transaction has been signed:': 'Die obige Transaktion wurde signiert:',
+    'Signed transaction': 'Signierte Transaktion',
+    'Send your Bitcoin in the safest way.': 'Senden Sie Ihre Bitcoin auf sicherste Weise.',
+'100% Free,Open Source!Offline signature, the most secure Bitcoin transfer method': '100% Kostenlos, Open Source! Offline-Signatur, die sicherste Bitcoin-Übertragungsmethode',
+'Start': 'Start',
+'Download the project file,unzip,then you can run the index.html locally with any browser on Windows,Linux,MAC OS...': 'Laden Sie die Projektdatei herunter, entpacken Sie sie und Sie können die index.html lokal mit jedem Browser unter Windows, Linux, MAC OS ausführen...',
+'Choose the cryptocurrency you want to use.': 'Wählen Sie die Kryptowährung aus, die Sie verwenden möchten.',
+'1:Create transaction': '1:Transaktion erstellen',
+'2:Sign transaction,It is recommended to sign on an offline device.': '2:Transaktion signieren, es wird empfohlen, auf einem Offline-Gerät zu signieren.',
+'3:Broadcast transaction': '3:Transaktion übertragen',
+'Donate Bitcoin:': 'Bitcoin spenden:',
+'Run on iPhone/iPad': 'Auf iPhone/iPad ausführen',
+'on Windows,MAC,Linux,we just run index.html in browser online or offline,it doesnt need any addtional install.': 'Unter Windows, MAC, Linux führen wir einfach index.html im Browser online oder offline aus. Es ist keine zusätzliche Installation erforderlich.',
+'You need prepare a MAC computer in order to transfer project files through airpdrop.': 'Sie müssen einen MAC-Computer vorbereiten, um Projektdateien über AirDrop zu übertragen.',
+'1.This project is HTML+JS, so we need download a HTML viewer from Appstore.you can also use other html viewer APP in APPStore': '1.Dieses Projekt besteht aus HTML+JS, daher müssen wir einen HTML-Viewer aus dem Appstore herunterladen. Sie können auch andere HTML-Viewer-Apps im APPStore verwenden.',
+'2.drag project folder to our iPhone/iPad through Airdrop': '2.Ziehen Sie den Projektordner über AirDrop auf unser iPhone/iPad.',
+'3.save folder to HTML Viewer': '3.Speichern Sie den Ordner im HTML-Viewer.',
+'4.tab folder icon in HTML Viewer APP': '4.Wählen Sie das Ordnersymbol in der HTML Viewer-App aus.',
+'5.find index.html,and tab it.': '5.Finden Sie index.html und wählen Sie es aus.',
+'6.Now we can run Signer on our iPhone and iPad Successfully!': '6.Jetzt können wir Signer erfolgreich auf unserem iPhone und iPad ausführen!',
+'Tips:iPhone camera can directly scan QR codes offline': 'Hinweis: Die iPhone-Kamera kann QR-Codes offline direkt scannen.',
+ '7.If you want to sign offline, just turn on airplane mode.': '7.Wenn Sie offline unterschreiben möchten, schalten Sie einfach den Flugmodus ein.',
+    '8.Still worried?turn off the WIFI permit of APP.': '8.Immer noch besorgt? Schalten Sie die WI-FI-Berechtigung der APP aus.',
+  },
+  'vi': {
+    // Vietnamese translations
+    '1.Create Transaction': '1. Tạo Giao dịch',
+    '2.Sign': '2. Ký',
+    '3.Broadcast': '3. Phát sóng',
+    'Chain Settings': 'Cài đặt Chuỗi',
+    'IOS': 'IOS',
+    'How to use': 'Cách sử dụng',
+    'Tools': 'Công cụ',
+    'Help': 'Trợ giúp',
+    'Transaction': 'Giao dịch',
+    'Use this page to create a raw transaction': 'Sử dụng trang này để tạo một giao dịch nguyên thủy',
+    'Your Address, WIF key, Redeem Script or Transaction ID': 'Địa chỉ, khóa WIF, mã rút gọn hoặc ID Giao dịch của bạn',
+    'Recipient Address': 'Địa chỉ người nhận',
+    'Amount': 'Số tiền',
+    'Load': 'Tải',
+    'Advanced Options': 'Tùy chọn nâng cao',
+    'Transaction Fee(Min:0.000001)': 'Phí giao dịch (Tối thiểu: 0.000001)',
+    'Create Transaction': 'Tạo Giao dịch',
+    'Sign Transaction': 'Ký Giao dịch',
+    'Recommended offline': 'Đề nghị sử dụng ngoại tuyến',
+    'Private key': 'Khóa riêng',
+    'Show/Hide': 'Hiện/Ẩn',
+    'Language': 'Ngôn ngữ',
+    'Sign Transaction Info': 'Để tránh tiết lộ khóa riêng của bạn trên mạng, đề nghị ký giao dịch trên thiết bị Android, iOS hoặc máy tính không kết nối Internet, từ đó thực hiện việc ký ngoại tuyến.',
+    'Broadcast Your Transaction': 'Phát sóng Giao dịch của bạn',
+    'into the Blockchain!': 'vào Blockchain!',
+    'Please enter the signed transaction code:': 'Vui lòng nhập mã giao dịch đã ký:',
+    'Settings': 'Cài đặt',
+    'The first transaction will returned to you as change': 'Giao dịch đầu tiên sẽ được trả lại cho bạn như là tiền thừa',
+    'The transaction below has been generated and encoded. It can be broadcasted once it has been signed.': 'Giao dịch dưới đây đã được tạo và mã hóa. Nó có thể được phát sóng sau khi đã được ký.',
+    'Sign': 'Ký',
+    'Broadcast': 'Phát sóng',
+    'The above transaction has been signed:': 'Giao dịch trên đã được ký:',
+    'Signed transaction': 'Giao dịch đã ký',
+    'Send your Bitcoin in the safest way.': 'Gửi Bitcoin của bạn một cách an toàn nhất.',
+'100% Free,Open Source!Offline signature, the most secure Bitcoin transfer method': '100% Miễn phí, Mã nguồn mở! Chữ ký ngoại tuyến, phương pháp chuyển Bitcoin an toàn nhất',
+'Start': 'Bắt đầu',
+'Download the project file,unzip,then you can run the index.html locally with any browser on Windows,Linux,MAC OS...': 'Tải xuống tệp dự án, giải nén, sau đó bạn có thể chạy index.html trên máy cục bộ với bất kỳ trình duyệt nào trên Windows, Linux, MAC OS...',
+'Choose the cryptocurrency you want to use.': 'Chọn loại tiền điện tử bạn muốn sử dụng.',
+'1:Create transaction': '1:Tạo giao dịch',
+'2:Sign transaction,It is recommended to sign on an offline device.': '2:Ký giao dịch, nên ký trên thiết bị không kết nối mạng.',
+'3:Broadcast transaction': '3:Phát sóng giao dịch',
+'Donate Bitcoin:': 'Quyên góp Bitcoin:',
+'Run on iPhone/iPad': 'Chạy trên iPhone/iPad',
+'on Windows,MAC,Linux,we just run index.html in browser online or offline,it doesnt need any addtional install.': 'Trên Windows, MAC, Linux, chỉ cần chạy index.html trong trình duyệt trực tuyến hoặc ngoại tuyến, không cần cài đặt thêm.',
+'You need prepare a MAC computer in order to transfer project files through airpdrop.': 'Bạn cần chuẩn bị một máy tính MAC để chuyển các tệp dự án qua AirDrop.',
+'1.This project is HTML+JS, so we need download a HTML viewer from Appstore.you can also use other html viewer APP in APPStore': '1.Dự án này sử dụng HTML+JS, vì vậy chúng ta cần tải xuống một trình xem HTML từ Appstore. Bạn cũng có thể sử dụng ứng dụng trình xem HTML khác trong APPStore.',
+'2.drag project folder to our iPhone/iPad through Airdrop': '2.Kéo thư mục dự án vào iPhone/iPad của chúng ta thông qua AirDrop.',
+'3.save folder to HTML Viewer': '3.Lưu thư mục vào Trình xem HTML',
+'4.tab folder icon in HTML Viewer APP': '4.Chọn biểu tượng thư mục trong ứng dụng Trình xem HTML.',
+'5.find index.html,and tab it.': '5.Tìm index.html và chọn nó.',
+'6.Now we can run Signer on our iPhone and iPad Successfully!': '6.Bây giờ chúng ta có thể chạy Signer trên iPhone và iPad thành công!',
+'Tips:iPhone camera can directly scan QR codes offline': 'Mẹo: Máy ảnh iPhone có thể quét mã QR trực tiếp ngoại tuyến.',
+ '7.If you want to sign offline, just turn on airplane mode.': '7.Nếu bạn muốn ký ngoại tuyến, chỉ cần bật chế độ máy bay.',
+    '8.Still worried?turn off the WIFI permit of APP.': '8.Vẫn còn lo lắng? Tắt quyền WIFI của ứng dụng.',
+  }
+
+
+    };
+
+    // Process translation
+    $(function() {
+      $('.translate').click(function() {
+        var lang = $(this).attr('id');
+console.log("change language..");
+        $('.lang').each(function(index, item) {
+          $(this).text(arrLang[lang][$(this).attr('key')]);
+        });
+      });
+    });
+  </script>
+
+
+
+	</head>
+
+	<body>
+		<div id="wrap">
+			<!-- Fixed navbar -->
+			<div id="header" class="navbar navbar-default " role="navigation">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+
+ 
+						
+
+					</div>
+					<div class="collapse navbar-collapse">
+						<ul class="nav navbar-nav">
+
+<!--<span class="glyphicon glyphicon-pencil"></span>
+<span class="glyphicon glyphicon-globe"></span>
+<li><a href="#wallet" data-toggle="tab"><span class="glyphicon glyphicon-briefcase"></span> Wallet</a></li>
+<li><a href="" target="_blank">Service Status</a></li>
+-->
+
+
+
+<li> <a  href="#home" class="navbar-brand" id="homeBtn"><img src="images/logo.png"  height="30"></a> </li>
+
+<li>  <a id="CurrentChainID" class="text-success" href="#" data-toggle="tab"> </a>  </li>
+
+
+<li><a href="#newTransaction" class="lang" key="1.Create Transaction" data-toggle="tab">1.Create Transaction</a></li>
+<li><a href="#sign" class="lang" key="2.Sign" data-toggle="tab">2.Sign</a></li>
+
+<li><a href="#broadcast" class="lang" key="3.Broadcast" data-toggle="tab">3.Broadcast</a></li>
+
+<li><a href="#settings" class="lang" key="Chain Settings" data-toggle="tab"><span class="glyphicon glyphicon-wrench" ></span>Chain Settings</a></li>
+
+
+
+<li><a href="#IOS" class="lang" key="IOS" data-toggle="tab">IOS</a></li>
+
+
+<li><a href="#Tutorial" class="lang" key="How to use" data-toggle="tab">How to use</a></li>
+
+
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle lang"   key="Tools" data-toggle="dropdown"><span class="glyphicon glyphicon-plus"></span>Tools<b class="caret"></b></a>
+								<ul class="dropdown-menu">
+								<li><a href="#verify" data-toggle="tab"> Verify</a></li>
+									<li><a href="#newAddress" data-toggle="tab">Address</a></li>
+									<li><a href="#newSegWit" data-toggle="tab">SegWit Address</a></li>
+									<li><a href="#newMultiSig" data-toggle="tab">MultiSig Address</a></li>
+									<li><a href="#newTimeLocked" data-toggle="tab">Time Locked Address</a></li>
+									<li><a href="#newHDaddress" data-toggle="tab">HD Address</a></li>
+									<!--<li class="divider"></li>-->
+									 
+								</ul>
+							</li>
+							
+							
+							
+
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle lang"   key="Help" data-toggle="dropdown"><span class="glyphicon glyphicon-info-sign"></span>Help<b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<!--<li><a href="#fees" data-toggle="tab">Fee Calculator</a></li>
+
+
+									<li role="separator" class="divider"></li>
+
+
+									-->
+									
+									
+									
+									<li><a href="#about" data-toggle="tab">About</a></li>
+								</ul>
+							</li>
+
+
+
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle lang"   key="Language" data-toggle="dropdown"> Language<b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<!--<li><a href="#fees" data-toggle="tab">Fee Calculator</a></li>
+
+
+									<li role="separator" class="divider"></li>
+
+
+									-->
+									
+									
+									
+									 
+									<li><a href="#" id="es"  class="translate" data-toggle="tab">Español</a></li>
+									<li><a href="#" id="hi"  class="translate" data-toggle="tab">Non</a></li>
+									<li><a href="#" id="bn"  class="translate" data-toggle="tab">Bengali</a></li>
+									<li><a href="#" id="pt"  class="translate" data-toggle="tab">Português</a></li>
+									<li><a href="#" id="ru"  class="translate" data-toggle="tab">Russian</a></li>
+									 
+									<li><a href="#" id="ja"  class="translate" data-toggle="tab">Japanese</a></li>
+									<li><a href="#" id="tr"  class="translate" data-toggle="tab">Turkish</a></li>
+									<li><a href="#" id="ko"  class="translate" data-toggle="tab">Korean</a></li>
+									<li><a href="#" id="fr"  class="translate" data-toggle="tab">French</a></li>
+
+
+									<li><a href="#" id="zh"  class="translate" data-toggle="tab">中文</a></li>
+									<li><a href="#" id="vi"  class="translate" data-toggle="tab">Vietnamese</a></li>
+
+
+								</ul>
+							</li>
+
+
+
+
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div id="content" class="container">
+
+				<noscript class="alert alert-danger center-block"><span class="glyphicon glyphicon-exclamation-sign"></span> This page uses javascript, please enable it to continue!</noscript>
+
+				<div class="tab-content">
+					<div class="tab-pane tab-content active" id="home">
+						<div class="row">
+							<div class="col-md-12">
+		 
+							</div>
+						</div>
+
+						<div class="jumbotron">
+							<h1 class="lang" key="Bitcoin Signer">Bitcoin Signer</h1>
+							<h3 class="lang" key="Send your Bitcoin in the safest way.">Send your Bitcoin in the safest way.</h3>
+							<p class="lang" key="100% Free,Open Source!Offline signature, the most secure Bitcoin transfer method">100% Free,Open Source!Offline signature, the most secure Bitcoin transfer method</p>
+
+							<p><img src="images/Bitcoin.png?raw=true"><img src="images/Litecoin.png?raw=true"><img src="images/Dogecoin.png?raw=true"></p>
+
+
+<p><img src="images/windows.png?raw=true"><img src="images/macos.png?raw=true"><img src="images/ios.png?raw=true"><img src="images/android.png?raw=true"><img src="images/linux.png?raw=true"></p>
+
+
+							<p><a class="btn btn-primary btn-lg lang" key="Start" href="#newTransaction" role="button">Start</a></p>
+						</div>
+
+						<hr>
+
+						<div class="row">
+							<div class="col-md-4">
+								<h3><span class="glyphicon glyphicon-ok"></span> Open Source</h3>
+								<p>Signer is an open source web based wallet written in javascript and released under the <a href="LICENSE">MIT license</a> which means it's free to use and edit.</p>
+							</div>
+
+							<div class="col-md-4">
+								<h3><span class="glyphicon glyphicon-fullscreen"></span> MultiSig</h3>
+								<p>We offer a fully transparent <a href="#newMultiSig">multisig</a> solution which works seamlessly offline and with other bitcoin clients.</p>
+							</div>
+
+							<div class="col-md-4">
+								<h3><span class="glyphicon glyphicon-bitcoin"></span> Raw Transactions</h3>
+								<p><a href="#newTransaction">Create</a>, <a href="#verify">verify</a>, <a href="#sign">sign</a> and <a href="#broadcast">broadcast</a> custom raw transactions online with advanced features and minimal effort!</p>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-4">
+								<h3><span class="glyphicon glyphicon-piggy-bank"></span> Wallet</h3>
+								<p>Quick access to an <a href="#wallet">online wallet</a> where only you have access to your own private keys &amp; can <a href="#fees">calculate your own fee</a>!</p>
+							</div>
+
+							<div class="col-md-4">
+								<h3><span class="glyphicon glyphicon-globe"></span> Addresses</h3>
+								<p>We support <a href="#newAddress">regular addresses</a>, <a href="#newMultiSig">multisig</a>, <a href="#newSegWit">segwit / bech32</a> and stealth all with access to your own private keys!</p>
+							</div>
+
+							<div class="col-md-4">
+								<h3><span class="glyphicon glyphicon-wrench"></span>  Development</h3>
+								<p>Use what we've built to write your own projects! See our documention (coming soon), or contribute at <a href="https://github.com/CryptoDappRun/Bitcoin-Signer-Wallet">github</a>.</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="tab-pane tab-content" id="wallet">
+						<div class="row">
+							<div class="col-md-12">
+								<h2>Open Wallet <small> browser based bitcoin wallet</small></h2>
+								<div id="openLogin">
+									<form class="form-signin" role="form" action="javascript:;">
+
+										<p>Use the form below to open a wallet and begin using this service.</p>
+
+										<div class="alert alert-warning">
+											<b>Notice</b>: Different email address and password combination will open different wallets, be careful when entering your details as lost accounts can not be recovered! 
+										</div>
+
+										<input id="openEmail" type="email" class="form-control" placeholder="Email address" required autofocus>
+										<input id="openPass" type="password" class="form-control" placeholder="Password" required>
+										<input id="openPassConfirm" type="password" class="form-control" placeholder="Password confirm" required>
+										<br>
+
+										<div>
+											<a href="javascript:;" class="optionsCollapse"><div class="well well-sm"><span class="glyphicon glyphicon-collapse-down" id="glyphcollapse"></span> Advanced Options</div></a>
+											<div class="hidden optionsAdvanced">
+												<label>Segregated Witness Address</label>
+												<p class="checkbox">
+													<label><input type="checkbox" id="walletSegwit" class="checkbox-inline" checked> Use a segwit address instead of a regular address. <span class="text-muted"><i>(recommended)</i></span></label></label> <br>
+													<label><input type="radio" id="walletSegwitp2sh" class="walletSegwitType" name="walletSegWitType" value="p2sh" checked> p2sh address</label> <br>
+													<label><input type="radio" id="walletSegwitBech32" class="walletSegwitType" name="walletSegWitType" value="bech32"> bech32 address</label>
+												</p>
+
+												<label>Enable Replace by Fee (RBF)</label>
+												<p class="checkbox">
+													<label><input type="checkbox" id="walletRBF" class="checkbox-inline" checked> Enable RBF on all transactions, allowing you to manually raise the transaction fee later if required. <span class="text-muted"><i>(recommended)</i></span></label></label>
+												</p>
+											</div>
+										</div>
+
+										<div id="openLoginStatus" class="alert alert-danger hidden"></div>
+										<button id="openBtn" class="btn btn-primary" type="submit">Submit</button>
+									</form>
+								</div>
+
+								<div id="openWallet" class="hidden">
+									<div class="row">
+										<div class="col-md-12">
+											<p><span style="float:right;"><a href="javascript:;" id="walletLogout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></span>Welcome to your wallet, enjoy your stay!</p>
+										</div>
+										<div class="col-md-12" align="center">
+											<div id="walletQrCode"></div> <br>
+											<div>
+												<span id="walletLoader" class="hidden"><img src="images/loader.gif"></span>
+												<span id="walletAddress"></span> 
+
+												<div class="btn-group">
+													<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" id="walletToBtn">SegWit <span class="caret"></span></button>
+													<ul class="dropdown-menu">
+														<li><a href="javascript:;" id="walletToSegWit">SegWit</a></li>
+														<li><a href="javascript:;" id="walletToSegWitBech32">SegWit/Bech32</a></li>
+														<li><a href="javascript:;" id="walletToLegacy">Legacy</a></li>
+													</ul>
+												</div>
+											</div>
+											<br>
+											<div style="text-align:center; width:350px;">
+												<ul class="nav nav-pills" role="tablist">
+													<li role="presentation" class="active"><a href="javascript:;" id="walletBalance">0.00 BTC</a></li>
+													<li role="presentation"><a href="javascript:;" id="walletShowSpend">Spend</a></li>
+													<li role="presentation"><a href="javascript:;" id="walletHistory" target="_blank">History</a></li>
+													<li role="presentation"><a href="javascript:;" id="walletShowBuy">Buy</a></li>
+													<li role="presentation"><a href="javascript:;" id="walletShowKeys">Keys</a></li>
+												</ul>
+
+												<br>
+
+												<div id="walletBuy" class="row walletOptions hidden">
+
+													<div class="col-md-6">
+														<label>Exchanges</label>
+														<p><img src="images/hodlhodl16x.png" style="padding:2;"> <b><a href="https://hodlhodl.com/join/XD4F" target="_bank">HodlHodl</a></b><br>Multisig p2p exchange</p>
+														<p><img src="images/changelly16x.png" style="padding:2;"> <b><a href="https://changelly.com/buy?from=usd&to=btc&amount=150&ref_id=wdo6tcw9bn9yrd91" target="_blank">Changelly</a></b> <br>Instant crypto exchange</p>
+													</div>
+
+													<div class="col-md-6">
+														<label>Services</label>
+														<p><img src="images/bitrefill16x.png" style="padding:2;"> <b><a href="https://www.bitrefill.com/signup/?code=zwuxxhbo" target="_bank">Bitrefill</a></b><br>Coupons and vouchers</p>
+													</div>
+		
+												</div>
+
+												<div id="walletKeys" class="walletOptions hidden">
+													<label>Public Key</label>
+													<input class="form-control pubkey" type="text" readonly>
+
+													<div class="walletSegWitRS hidden">
+														<label>Redeem Script <i>(SegWit)</i></label>
+														<input class="form-control" type="text" readonly>
+													</div>
+
+													<label>Private key</label>
+													<div class="input-group">
+														<input class="form-control privkey" type="password" readonly>
+
+														<span class="input-group-btn">
+															<button class="showKey btn btn-default" type="button">Show</button>
+														</span>
+													</div>
+
+													<label>Private Key (AES256 encrypted key)</label>
+													<input class="form-control privkeyaes" type="text" readonly>
+												</div>
+
+												<div id="walletSpend" class="walletOptions hidden">
+													<div class="row">
+														<div class="form-inline output">
+															<div class="col-xs-8">
+																<label>Address</label>
+															</div>
+
+															<div class="col-xs-3">
+																<label>Amount</label>
+															</div>
+														</div>
+													</div>
+
+													<div class="row" id="walletSpendTo">
+														<div class="form-horizontal output">
+															<div class="col-xs-8">
+																<input type="text" class="form-control addressTo" data-original-title="" title="">
+															</div>
+															<div class="col-xs-3">
+																<input type="text" class="form-control amount" data-original-title="" title="" placeholder="0.00">
+
+															</div>
+
+															<a href="javascript:;" class="addressAdd"><span class="glyphicon glyphicon-plus"></span></a>
+															<br><br>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-xs-6">
+															<label><abbr title="the amount to pay in network miner fee">Transaction Fee</abbr>&nbsp;&nbsp;<a href="javascript:;" id="feesestwallet"><span class="glyphicon glyphicon-question-sign"></span></a></label>
+															<input type="text" class="form-control" value="0.00001000" id="txFee">
+														</div>
+														<div class="col-xs-5">
+															<label><abbr title="the amount to donate">Donation</abbr></label>
+															<input type="text" class="form-control" value="0.001" id="developerDonation">
+														</div>
+													</div>
+													<br>
+
+													<div id="walletSendStatus" class="alert alert-danger hidden"></div>
+
+													<button class="btn btn-primary" type="button" id="walletSendBtn">Send</button>
+													<button class="btn btn-default" type="button">Reset</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="tab-pane tab-content" id="newAddress">
+						<h2>New Address <small>create a new address</small></h2>
+						<p>Any keys used you will need to manually store safely as they will be needed later to redeem the bitcoins.</p>
+						<label>Address (Share)</label>
+
+						<div class="input-group">
+							<input id="newBitcoinAddress" type="text" class="form-control address" value="" readonly>
+							<span class="input-group-btn">
+								<button class="qrcodeBtn btn btn-default" type="button" data-toggle="modal" data-target="#modalQrcode"><span class="glyphicon glyphicon-qrcode"></span></button>
+							</span>
+						</div>
+
+						<label>Public key (Share)</label>
+						<input id="newPubKey" type="text" class="form-control" readonly>
+						<label>Private key (WIF key)</label>
+						<div class="input-group">
+							<input id="newPrivKey" type="password" class="form-control" value="" readonly>
+							<span class="input-group-btn">
+								<button class="showKey btn btn-default" type="button">Show</button>
+							</span>
+						</div>
+
+						<div id="aes256wifkey" class="hidden">
+							<label>AES-256 Encrypted WIF key</label>
+							<input id="newPrivKeyEnc" type="text" class="form-control" value="" readonly>
+						</div>
+
+						<h3>Address Options</h3>
+						<p>You can use the advanced options below to generate different kind of keys and addresses.</p>
+						<div class="checkbox">
+							<label><input type="checkbox" id="newCompressed" class="checkbox-inline" checked> Compress <span class="text-muted">(recommended)</span></label>
+						</div>
+						<div class="checkbox">
+							<label><input type="checkbox" id="newBrainwallet" class="checkbox-inline"> Custom Seed or Brain Wallet</label>
+							<input type="text" class="form-control hidden" id="brainwallet">
+						</div>
+
+						<div class="checkbox">
+							<label><input type="checkbox" id="encryptKey" class="checkbox-inline"> Encrypt Private Key with AES-256 Password</label>
+							<div id="aes256passform" class="row hidden">
+								<div class="col-md-6">
+									<input type="password" class="form-control" id="aes256pass" placeholder="Password"></label>
+								</div>
+								<div class="col-md-6">
+									<input type="password" class="form-control" id="aes256pass_confirm" placeholder="Confirm Password">
+								</div>
+							</div>
+
+							<div id="aes256passStatus" class="row hidden">
+								<div class="col-md-12">
+									<br>
+									<div class="alert alert-danger"> <span class="glyphicon glyphicon-exclamation-sign"></span> Your passwords do not match, please try again!</div>
+								</div>
+							</div>
+
+						</div>
+
+						<div class="btn-group">
+							<input type="button" class="btn btn-primary" value="Generate" id="newKeysBtn">
+							<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<span class="caret"></span>
+								<span class="sr-only">Toggle Dropdown</span>
+							</button>
+							<ul class="dropdown-menu">
+								<li><a href="#" id="newPaperwalletBtn">Print</a></li>
+							</ul>							
+						</div>
+						<br>
+					</div>
+
+					<div class="tab-pane tab-content" id="newSegWit">
+						<h2>New SegWit Address <small> Smaller &amp; Faster Transactions</small></h2>
+
+						<p>Any keys used you will need to manually store safely as they will be needed later to redeem the bitcoins.</p>
+
+						<label>SegWit Address (Share)</label>
+
+						<div class="input-group">
+							<input id="newSegWitAddress" type="text" class="form-control address" value="" readonly>
+							<span class="input-group-btn">
+								<button class="qrcodeBtn btn btn-default" type="button" data-toggle="modal" data-target="#modalQrcode"><span class="glyphicon glyphicon-qrcode"></span></button>
+							</span>
+						</div>
+
+						<label>RedeemScript</label>
+						<input id="newSegWitRedeemScript" type="text" class="form-control" readonly>
+
+						<label>Public key</label>
+						<input id="newSegWitPubKey" type="text" class="form-control" readonly>
+
+						<label>Private key (WIF key)</label>
+						<div class="input-group">
+							<input id="newSegWitPrivKey" type="password" class="form-control" value="" readonly>
+							<span class="input-group-btn">
+								<button class="showKey btn btn-default" type="button">Show</button>
+							</span>
+						</div>
+
+
+						<h3>Address Options</h3>
+						<p>You can use the advanced options below to generate different kind of keys and addresses.</p>
+
+						<div class="checkbox">
+							<label><input type="checkbox" id="newSegWitBech32addr" class="checkbox-inline" checked> Enable <a href="https://en.bitcoin.it/wiki/Bech32" target="_blank">Bech32</a>?</label>
+						</div>
+
+						<div class="checkbox">
+							<label><input type="checkbox" id="newSegWitBrainwallet" class="checkbox-inline"> Custom Seed or Brain Wallet</label>
+							<input type="text" class="form-control hidden" id="brainwalletSegWit">
+						</div>
+
+						<div class="btn-group">
+							<input type="button" class="btn btn-primary" value="Generate" id="newSegWitKeysBtn">
+							<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<span class="caret"></span>
+								<span class="sr-only">Toggle Dropdown</span>
+							</button>
+
+							<ul class="dropdown-menu">
+								<li><a href="#" id="newSegwitPaperwalletBtn">Print</a></li>
+							</ul>
+						</div>
+						<br>
+					</div>
+
+					<div class="tab-pane tab-content" id="newMultiSig">
+						<h2>New Multisig Address <small>Secure multisig address</small></h2>
+
+						<div class="row">
+
+							<div class="col-md-8">
+								<p>Public keys can be <a href="#newAddress">generated in your browser</a> or from your bitcoin client</a>.</p>
+								<p>Enter the public keys of all the participants, to create a <a href="https://en.bitcoin.it/wiki/Address#Multi-signature_addresses" target="_blank">multi signature address</a>. Maximum of 15 allowed. Compressed and uncompressed public keys are accepted.</p>
+							</div>
+
+							<div class="col-md-3">
+								<p class="alert alert-info"><span class="glyphicon glyphicon-info-sign"></span> <a href="javascript:;" data-toggle="modal" data-target="#modalMediator"><abbr>Need a Mediator?</abbr></a></p>
+							</div>
+
+							<div class="col-md-1">
+							</div>
+						</div>
+
+						<div id="multisigPubKeys" class="row">
+							<div class="form-horizontal">
+								<div class="col-xs-11">
+									<input type="text" class="form-control pubkey">
+								</div>
+								<a href="javascript:;" class="pubkeyAdd"><span class="glyphicon glyphicon-plus"></span></a>
+								<br><br>
+							</div>
+						</div>
+
+						<p>Enter the amount of signatures required to release the coins</p>
+						<div class="row">
+							<div class="col-xs-3">
+								<select id="releaseCoins" class="form-control">
+									<option>1</option>
+									<option selected>2</option>
+									<option>3</option>
+									<option>4</option>
+									<option>5</option>
+									<option>6</option>
+									<option>7</option>
+									<option>8</option>
+									<option>9</option>
+									<option>10</option>
+									<option>11</option>
+									<option>12</option>
+									<option>13</option>
+									<option>14</option>
+									<option>15</option>
+								</select>
+							</div>
+						</div>
+
+						<br>
+
+						<div id="multiSigErrorMsg" class="alert alert-danger" style="display:none;"></div>
+
+						<div class="alert alert-success hidden" id="multiSigData">
+							<label>Address</label>
+							<p>Payment should be made to this address:</p>
+							<div class="row">
+								<div class="col-lg-6">
+									<div class="input-group">
+										<input type="text" class="form-control address" value="" readonly>
+										<span class="input-group-btn">
+											<button class="qrcodeBtn btn btn-default" type="button" data-toggle="modal" data-target="#modalQrcode"><span class="glyphicon glyphicon-qrcode"></span></button>
+										</span>
+									</div>
+								</div>
+							</div>
+							<label>Redeem Script</label>
+							<p>This script should be <i>saved and should be shared with all the participants before a payment is made</i>, so they may validate the authenticity of the address, it will also be used later to release the bitcoins.</p>
+							<textarea class="form-control script" style="height:160px" readonly></textarea>
+							<label>Shareable URL</label>
+							<input type="text" class="scriptUrl form-control" readonly>
+						</div>
+
+						<input type="button" class="btn btn-primary" value="Submit" id="newMultiSigAddress">
+						<br>
+					</div>
+
+                    <div class="tab-pane tab-content" id="newTimeLocked">
+                        <h2>New Time Locked Address <small>Coins can be released only after a certain date</small></h2>
+
+                        <div class="row">
+
+                            <div class="col-md-11">
+				<p>Use <i><a href="https://github.com/bitcoin/bips/blob/master/bip-0065.mediawiki" target="_blank">OP_CHECKLOCKTIMEVERIFY</a></i> (OP_HODL) to create a time locked address where the funds are unspendable until a set date and time has passed.</p>
+                                <p>Public keys can be <a href="#newAddress">generated in your browser</a> or from your bitcoin client</a>.</p>
+                                <p>Enter the public key that will be able to unlock the funds after the a certain date.
+                            </div>
+
+                            <div class="col-md-1">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-horizontal">
+                                <div class="col-xs-12">
+                                    <input id="timeLockedPubKey" type="text" class="form-control pubkey">
+                                </div>
+                            </div>
+                        </div>
+
+                        <p id="timeLockedRbTypeBox">
+                        	Enter the 
+                        		<input type="radio" id="timeLockedRbTypeDate" name="timeLockedRbType" value="date" checked="checked"> 
+                        		<label for="timeLockedRbTypeDate">date and time</label> 
+                        		or                         		
+                        		<input type="radio" id="timeLockedRbTypeBlockHeight" name="timeLockedRbType" value="blockheight">
+                        		<label for="timeLockedRbTypeBlockHeight">blockheight</label>
+
+                        		required to release the coins: 
+                        </p>
+                        <div class="row">
+                            <div class='col-md-6'>
+                                <div class="form-group">
+                                    <div class='input-group date' id='timeLockedDateTimePicker'>
+                                        <input type='text' class="form-control" placeholder="MM/DD/YYYY hh:mm" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                    <div class='input-group hidden' id='timeLockedBlockHeight'>
+                                        <input type='text' id='timeLockedBlockHeightVal' class="form-control" placeholder="Blockheight" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <div id="timeLockedErrorMsg" class="alert alert-danger" style="display:none;"></div>
+
+                        <div class="alert alert-success hidden" id="timeLockedData">
+                            <label>Address</label>
+                            <p>Payment should be made to this address:</p>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control address" value="" readonly>
+                                        <span class="input-group-btn">
+                                            <button class="qrcodeBtn btn btn-default" type="button" data-toggle="modal" data-target="#modalQrcode"><span class="glyphicon glyphicon-qrcode"></span></button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <label>Redeem Script</label>
+                            <p>This script should be <i>saved and should be shared with all the participants before a payment is made</i>, so they may validate the authenticity of the address, it will also be used later to release the bitcoins.</p>
+                            <textarea class="form-control script" style="height:160px" readonly></textarea>
+                            <label>Shareable URL</label>
+                            <input type="text" class="scriptUrl form-control" readonly>
+                        </div>
+
+                        <input type="button" class="btn btn-primary" value="Submit" id="newTimeLockedAddress">
+                        <br>
+                    </div>
+
+					<div class="tab-pane tab-content" id="newHDaddress">
+						<h2>New HD Address <small>making bip32 even easier</small></h2>
+						<p>Use the form below to generate a <i>master</i> hierarchical deterministic address.</p>
+
+						<label>xPub Address</label>
+						<div class="input-group">
+							<input id="newHDxpub" type="text" class="form-control" value="" readonly>
+							<span class="input-group-btn">
+								<button class="deriveHDbtn btn btn-default" type="button"><span title="Derive from key" class="glyphicon glyphicon-chevron-right"></span></button>
+							</span>
+						</div>
+
+						<label>xPrv Address</label>
+						<div class="input-group">
+							<input id="newHDxprv" type="text" class="form-control" value="" readonly>
+							<span class="input-group-btn">
+								<button class="deriveHDbtn btn btn-default" type="button"><span title="Derive from key" class="glyphicon glyphicon-chevron-right"></span></button>
+							</span>
+						</div>
+
+						<h3>Address Options</h3>
+						<p>You can use the advanced options below to generate different kinds of master addresses.</p>
+						
+						<div class="checkbox">
+							<label><input type="checkbox" id="newHDBrainwallet" class="checkbox-inline"> Custom Seed or Brain Wallet</label>
+							<input type="text" class="form-control hidden" id="HDBrainwallet">
+						</div>
+
+						<input type="button" class="btn btn-primary" value="Generate" id="newHDKeysBtn">
+					</div>
+
+					<div class="tab-pane tab-content" id="newTransaction">
+						<h2  class="lang" key="Transaction">Transaction  </h2>
+						<p class="lang" key="Use this page to create a raw transaction"  >Use this page to create a raw transaction</p>
+
+						<b class="lang"  key="Your Address, WIF key, Redeem Script or Transaction ID">Your Address, WIF key, Redeem Script or Transaction ID</b>:
+						<div class="input-group">
+							<span class="input-group-btn">
+								<button class="btn btn-info qrcodeScanner" type="button" data-toggle="modal" data-target="#modalQrcodeScanner" forward-result="#redeemFrom"><span class="glyphicon glyphicon-camera"></span></button>
+							</span>
+							<input type="text" id="redeemFrom" class="form-control" value="">
+							<span class="input-group-btn">
+								<button id="redeemFromBtn" class="btn btn-info lang" key="Load" type="button">Load</button>
+							</span>
+						</div>
+
+						<div id="BalanceID" class="text-success"></div>
+
+						<br>
+
+						<div class="hidden alert alert-danger" id="redeemFromStatus"></div>
+
+						<div class="hidden alert alert-info" id="redeemFromAddress"></div>
+
+						<div>
+							<a href="javascript:;" class="optionsCollapse lang" key="Advanced Options"><div class="well well-sm"><span class="glyphicon glyphicon-collapse-down" id="glyphcollapse"></span>Advanced Options</div></a>
+
+							<div class="hidden optionsAdvanced">
+
+								<label>Clear Inputs</label>
+								<p class="checkbox">
+									<label><input type="checkbox" id="clearInputsOnLoad" class="checkbox-inline" checked> Clear existing inputs when new inputs are loaded.</label>
+								</p>
+
+								<hr>
+
+								<label>Null Data</label> <span class="text-muted text-normal">(80 byte limit, <i>40 bytes recommended</i>)</span>
+								<p class="checkbox">
+									<label><input type="checkbox" id="opReturn" class="checkbox-inline"> Allow data to be sent within the transaction and stored in the blockchain by using <a href="https://bitcoin.org/en/developer-guide#null-data" target="_blank">OP_RETURN</a>.</label>
+									<div class="text-muted">When using this option you may enter a hex string or address into the address field on the output tab.</div>
+								</p>
+
+								<hr>
+
+								<label>Lock Time</label>
+								<p>The <a href="https://bitcoin.org/en/developer-guide#locktime-and-sequence-number">locktime</a> indicates the earliest time a transaction can be added to the block chain.</p>
+								<input type="text" class="form-control" value="0" id="nLockTime">
+
+								<hr>
+
+
+								<label>Replace By Fee (RBF)</label>
+								<p class="checkbox">
+									<label><input type="checkbox" id="txRBF" class="checkbox-inline" checked> Make this a <a href="https://en.bitcoin.it/wiki/Transaction_replacement" target="_blank">RBF transaction</a>.</label>
+								</p>
+
+								<hr>
+
+								<label>Network</label>
+								<p>The <a href="#settings">settings</a> page can be used to select alternative networks of which you can retrieve your unspent outputs and broadcast a signed transaction into.</p>
+
+								<hr>
+							</div>
+						</div>
+
+						<ul class="nav nav-tabs" id="putTabs">
+							<li class="active"><a href="#txoutputs" data-toggle="tab">Outputs <small>(<span id="totalOutput">0.00000000</span>)</small></a></li>
+							<li><a href="#txinputs" data-toggle="tab">Inputs <small>(<span id="totalInput">0.00000000</span>)</small></a></li>
+						</ul>
+
+						<br>
+
+						<div class="tab-content">
+
+							<div class="tab-pane fade in active" id="txoutputs">
+
+								<div class="lang" key="The first transaction will returned to you as change">The first transaction will returned to you as change</div>
+								<div class="row">
+									<div class="col-xs-8">
+										<label class="lang" key="Recipient Address"><abbr title="Address to send to">Recipient Address</abbr></label>
+									</div>
+									<div class="col-xs-3">
+										<label class="lang" key="Amount"><abbr title="Amount to send">Amount</abbr></label>
+									</div>
+									<div class="col-xs-1">
+									</div>
+								</div>
+
+								<div id="recipients">
+
+
+
+
+								
+									<div class="row recipient">
+										<div class="col-xs-8">
+											<input type="text" class="form-control address" disabled="true" id="SelfAddressID" placeholder="1" value="">
+										</div>
+										<div class="col-xs-3">
+											<input type="text" class="form-control amount" disabled="true" id="SelfAmountID" placeholder="0.00" value="">
+										</div>
+										<div class="col-xs-1">
+											<a href="javascript:;" class="addressAddTo"><span class="glyphicon glyphicon-plus"></span></a>
+										</div>
+									</div>
+
+
+
+
+
+
+								</div>
+							</div>
+
+
+							<div class="tab-pane fade" id="txinputs">
+								<p>Enter the details of inputs you wish to spend.</p>
+								<div class="row">
+									<div class="col-xs-5">
+										<label><abbr title="Transaction ID">Transaction ID:</abbr></label>
+									</div>
+									<div class="col-xs-1">
+										<label><abbr title="Transaction Input Number">N</abbr></label>
+									</div>
+									<div class="col-xs-3">
+										<label>Script</label>
+									</div>
+									<div class="col-xs-2">
+										<label><abbr title="This field is for accounting purposes only - the entire input will be spent!">Amount</abbr></label>
+									</div>
+									<div class="col-xs-1">
+									</div>
+								</div>
+
+								<div id="inputs">
+									<div class="row inputs">
+										<div class="col-xs-5">
+											<input type="text" class="form-control txId" placeholder="">
+										</div>
+										<div class="col-xs-1">
+											<input type="text" class="form-control txIdN" placeholder="0">
+										</div>
+										<div class="col-xs-3">
+											<input type="text" class="form-control txIdScript">
+										</div>
+										<div class="col-xs-2">
+											<input type="text" class="form-control txIdAmount" placeholder="0.00">
+										</div>
+										<div class="col-xs-1">
+											<a href="javascript:;" class="txidAdd"><span class="glyphicon glyphicon-plus"></span></a>
+											<a href="javascript:;" class="txidClear"><span class="glyphicon glyphicon-minus"></span></a>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+
+						<br>
+
+						<div class="row">
+							<div class="col-xs-6">
+								<label  class="lang" key="Transaction Fee(Min:0.000001)"><abbr title="the fee to miner,fee higher,speed faster">Transaction Fee(Min:0.000001)</abbr>&nbsp;&nbsp;<a href="javascript:;" id="feesestnewtx"><span class="glyphicon glyphicon-question-sign"></span></a></label>
+
+								<!--readonly-->
+								<input type="text" id="transactionFee" class="form-control" value="0.0000" >
+
+								<div id="Tips"></div>
+							</div>
+						</div>
+
+						<br>
+
+						<div id="transactionCreateStatus" class="alert alert-danger hidden"></div>
+
+						<div id="transactionCreate" class="alert alert-success hidden">
+							<label>Transaction</label>
+							<button class="qrcodeBtn btn btn-default" type="button" data-toggle="modal" data-target="#modalQrcode" style="float:right;"><span class="glyphicon glyphicon-qrcode"></span></button>
+
+							<p class="lang" key="The transaction below has been generated and encoded.It can be broadcasted once it has been signed.">The transaction below has been generated and encoded.It can be broadcasted once it has been signed.</p>
+							<br>
+			                                <textarea class="form-control" style="height:150px" readonly></textarea>
+
+							<p class="text-muted">Size: <span class="txSize">0</span> <i>bytes</i></p>
+						</div>
+
+<!--<input type="button"  class="btn btn-primary" id="transactionBtn">  -->		
+
+<button type="button" class="btn btn-primary lang" key="Create Transaction" id="transactionBtn">Create Transaction</button>
+
+						<br>
+<br><br><br>
+<h7 class="lang" key="Donate Bitcoin:">Donate Bitcoin:</h7>
+<h7> 1GkMoCVKvT7ZcDUGXemhT3CusgE68wiJ66</h7>
+					</div>
+
+
+					<div class="tab-pane tab-content" id="fees">
+						<h2>Bitcoin Fee Calculator</h2>
+						<p>This page will give you a guide on the lowest fee to use to get your transaction included within the next few blocks. It works by predicting the size of a transaction and comparing it to another transaction in a recent block to determine an appropriate fee.</p>	
+
+						<div align="center" class="alert alert-info">
+							<h2><span class="glyphicon glyphicon-question-sign"></span> Recommended Fee: <span class="recommendedFee">0.00000000</span> BTC <small> <br> for a transaction of <span class="feeTxSize">0</span> bytes</small></h2>
+							<span class="text-muted"><i><span class="feeSatByte">?</span> Sat/Byte</i></span>
+						</div>
+
+						<div id="txsliders" class="row">
+							<div class="col-md-6 txinputs">
+
+								<div align="center"><b><span class="txtotal total">0</span><br>Inputs</b></div>
+								<div id="txinputstype" align="center" class="small text-muted">
+									<br>
+									<span><span class="txsize">0</span> Bytes</span>
+								</div>
+
+								<h4 class="regular"><abbr title="Spending from a compressed legacy address. p2pkh">Regular</abbr> <small>Compressed</small> 
+									<span class="badge inputno" title="Number of Regular Inputs">1</span> 
+									<small><span class="bytes">148</span> bytes</small>
+									<small class="estimate hidden"><em> *estimate</em></small>
+								</h4> 
+
+								<div class="input-group">
+									<span class="input-group-btn"><button class="btn sliderbtn down" type="button"><span class="glyphicon glyphicon-chevron-left"></span></button></span>
+									<input type="range" min="0" max="100" value="1" class="slider txinput txi_regular" rel="regular">
+									<span class="input-group-btn"><button class="btn sliderbtn up" type="button"><span class="glyphicon glyphicon-chevron-right"></span></button></span>
+								</div>
+
+								<h4 class="segwit"><abbr title="Spending from a segwit address. p2sh">SegWit</abbr> 
+									<span class="badge inputno" title="Number of SegWit Inputs">0</span>
+									<small><span class="bytes">0</span> bytes</small>
+									<small class="estimate hidden"><em> *estimate</em></small>
+								</h4> 
+
+								<div class="input-group">
+									<span class="input-group-btn"><button class="btn sliderbtn down" type="button"><span class="glyphicon glyphicon-chevron-left"></span></button></span>
+									<input type="range" min="0" max="100" value="0" class="slider txinput txi_segwit" rel="segwit">
+									<span class="input-group-btn"><button class="btn sliderbtn up" type="button"><span class="glyphicon glyphicon-chevron-right"></span></button></span>
+								</div>
+
+								<h4 class="multisig"><abbr title="Spending from a multisig address. p2sh">MultiSig</abbr>  
+									<span class="badge inputno" title="Number of MultiSig Inputs">0</span>
+									<small><span class="bytes">0</span> bytes</small>
+									<small class="estimate hidden"><em> *estimate</em></small>
+								</h4> 
+
+								<div class="input-group">
+									<span class="input-group-btn"><button class="btn sliderbtn down" type="button"><span class="glyphicon glyphicon-chevron-left"></span></button></span>
+									<input type="range" min="0" max="100" value="0" class="slider txinput txi_multisig" rel="multisig">
+									<span class="input-group-btn"><button class="btn sliderbtn up" type="button"><span class="glyphicon glyphicon-chevron-right"></span></button></span>
+								</div>
+
+								<h4 class="hodl"><abbr title="Spending from a time locked address. p2sh">Hodl</abbr> <small>Time Locked</small> 
+									<span class="badge inputno" title="Number of Hodl Inputs">0</span>
+									<small><span class="bytes">0</span> bytes</small>
+									<small class="estimate hidden"><em> *estimate</em></small>
+								</h4>
+
+								<div class="input-group">
+									<span class="input-group-btn"><button class="btn sliderbtn down" type="button"><span class="glyphicon glyphicon-chevron-left"></span></button></span>
+									<input type="range" min="0" max="100" value="0" class="slider txinput txi_hodl" rel="hodl">
+									<span class="input-group-btn"><button class="btn sliderbtn up" type="button"><span class="glyphicon glyphicon-chevron-right"></span></button></span>
+								</div>
+
+								<h4 class="unknown"><abbr title="Spending from an unrecognized input. p2sh">Unknown</abbr> 
+									<span class="badge inputno" title="Number of Unknown Inputs">0</span>
+									<small><span class="bytes">0</span> bytes</small>
+									<small class="estimate hidden"><em> *estimate</em></small>
+								</h4>
+
+								<div class="input-group">
+									<span class="input-group-btn"><button class="btn sliderbtn down" type="button"><span class="glyphicon glyphicon-chevron-left"></span></button></span>
+									<input type="range" min="0" max="100" value="0" class="slider txinput txi_unknown" rel="unknown">
+									<span class="input-group-btn"><button class="btn sliderbtn up" type="button"><span class="glyphicon glyphicon-chevron-right"></span></button></span>
+								</div>
+
+								<br>
+							</div>
+
+							<div class="col-md-6 txoutputs">
+
+								<div align="center"><b><span class="txtotal total">0</span><br>Outputs</b></div>
+								<div id="txoutputtype" align="center" class="small text-muted">
+									<br>
+									<span><span class="txsize">0</span> Bytes</span>
+								</div>
+
+								<h4 class="p2pkh"><abbr title="A pay 2 public key hash. Starts with 1. Used with legacy addresses">Regular</abbr> <small>p2pkh (1...)</small> 
+									<span class="badge outputno" title="Number of p2pkh Outputs">2</span> 
+									<small><span class="bytes">68</span> bytes</small>
+									<small class="estimate hidden"><em> *estimate</em></small>
+								</h4>	 
+
+								<div class="input-group">
+									<span class="input-group-btn"><button class="btn sliderbtn down" type="button"><span class="glyphicon glyphicon-chevron-left"></span></button></span>
+									<input type="range" min="0" max="100" value="2" class="slider txoutput txo_p2pkh" rel="p2pkh">
+									<span class="input-group-btn"><button class="btn sliderbtn up" type="button"><span class="glyphicon glyphicon-chevron-right"></span></button></span>
+								</div>
+
+								<h4 class="p2sh"><abbr title="A pay 2 script hash address. Starts with a 3. For example a segwit or multisig address">Regular</abbr> <small>p2sh (3...)</small> 
+									<span class="badge outputno" title="Number of p2sh Outputs">0</span> 
+									<small><span class="bytes">0</span> bytes</small>
+									<small class="estimate hidden"><em> *estimate</em></small>
+								</h4> 
+
+								<div class="input-group">
+									<span class="input-group-btn"><button class="btn sliderbtn down" type="button"><span class="glyphicon glyphicon-chevron-left"></span></button></span>
+									<input type="range" min="0" max="100" value="0" class="slider txoutput txo_p2sh" rel="p2sh">	
+									<span class="input-group-btn"><button class="btn sliderbtn up" type="button"><span class="glyphicon glyphicon-chevron-right"></span></button></span>
+								</div>
+
+								<br>
+							</div>
+						</div>
+
+						<br>
+
+						<div class="row">
+							<div class="col-md-12">
+								<div class="text-muted">Chargable Transaction Size: <span class="feeTxSize">0</span> bytes</div>
+							</div>
+						</div>
+
+						<hr>
+
+						<div class="row">
+							<div class="col-md-12 recommended">
+
+								<h3>Blockchain Data <span class="pull-right"><button type="button" id="feeStatsReload" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-refresh"></span></button></span></h3>
+
+								<p>This is based on us comparing your transaction against a very recent transaction found in a very recent block</p>
+								<p><b>Block Height</b>: <span class="blockHeight">?</span></p>
+								<p class="hideOverflow"><b>Block #</b>: <span class="blockHash">?</span></p>
+								<p><b>Block Time</b>: <span class="blockTime">?</span> <span class="blockDateTime text-muted"></span></p>
+								<p class="hideOverflow"><b>Transaction ID</b>: <span class="txId">?</span></p>
+								<p><b>Transaction Size</b>: <span class="txSize">0</span> bytes</p>
+								<p><b>Transaction Fee</b>: <span class="txFee">0.00000000</span></p>
+								<p><b>Satoshi per Byte</b>: <span class="feeSatByte">0</span></p>
+
+								<p>Based on your data and this recently mined transaction we recommend a fee of <b><span class="recommendedFee">0.00000000</span> BTC</b> to get it into the next few blocks</p>
+							</div>
+						</div>
+
+						<br>
+
+						<div class="row">
+
+							<div class="col-md-12">
+								<a href="javascript:;" id="advancedFeesCollapse">
+									<div class="well well-sm"><span class="glyphicon glyphicon-collapse-down"></span> Advanced Options &amp; Raw Transaction</div>
+								</a>
+							</div>
+						</div>
+
+						<div class="row hidden" id="advancedFees">
+							<div class="col-md-12">
+								<p>Enter your unsigned or signed hex encoded transaction below:</p>
+								<textarea class="form-control txhex" style="height:160px"></textarea><br>
+								<button type="button" class="btn btn-primary" id="feesAnalyseBtn">Analyse Transaction</button>
+
+								<hr>
+
+								<h4>Estimate Input Size <small>in bytes</small></h4>
+
+								<div class="form-inline">
+									<div class="form-group">
+										<label for="est_txi_regular">Regular</label>
+										<input type="number" class="form-control" id="est_txi_regular" value="107">
+									</div>
+									<div class="form-group">
+										<label for="est_txi_segwit">SegWit</label>
+										<input type="number" class="form-control" id="est_txi_segwit" value="27">
+									</div>
+									<div class="form-group">
+										<label for="est_txi_multisig">MultiSig</label>
+										<input type="number" class="form-control" id="est_txi_multisig" value="351">
+									</div>
+									<div class="form-group">
+										<label for="est_txi_hodl">Hodl</label>
+										<input type="number" class="form-control" id="est_txi_hodl" value="78">
+									</div>
+									<div class="form-group">
+										<label for="est_txi_unknown">Unknown</label>
+										<input type="number" class="form-control" id="est_txi_unknown" value="512">
+									</div>
+								</div>
+
+								<h4>Estimate Output Size <small> in bytes</small></h4>
+								<div class="form-inline">
+									<div class="form-group">
+										<label for="est_txo_p2pkh">Regular P2PKH</label>
+										<input type="number" class="form-control" id="est_txo_p2pkh" value="25">
+									</div>
+										<div class="form-group">
+										<label for="est_txo_p2sh">Regular P2SH</label>
+										<input type="number" class="form-control" id="est_txo_p2sh" value="23">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="tab-pane tab-content" id="verify">
+						<h2>Verify <small>transactions and other scripts</small></h2>
+						<div class="row">
+							<div class="col-md-12">
+								<p>Enter the raw transaction, redeem script, pubkey, hd address or wif key to convert it into a readable format that can be verified manually.</p>
+								<textarea type="text" id="verifyScript" class="form-control" style="height:125px"></textarea>
+							</div>
+						</div>
+						<br>
+
+						<div class="hidden verifyData" id="verifyRsData">
+
+							<h4>Redeem Script</h4>
+							<p><span style="float:right"><a href="javascript:;" target="_blank" class="verifyLink" title="Link to this page"><span class="glyphicon glyphicon-link"></span></a></span>The above redeem script has been decoded</p>
+
+							<div class="hidden" id="verifyRsDataMultisig">
+								<label>Multi Signature Address</label>
+								<div class="row">
+    									<div class="col-lg-6">
+    										<div class="input-group">
+    											<input type="text" class="form-control address multisigAddress" value="" readonly>
+    											<span class="input-group-btn">
+    												<button class="qrcodeBtn btn btn-default" type="button" data-toggle="modal" data-target="#modalQrcode"><span class="glyphicon glyphicon-qrcode"></span></button>
+    											</span>
+    										</div>
+    									</div>
+    								</div>
+
+								<label>Required Signatures</label>
+		    						<p class="signaturesRequired">?</p>
+    								<label>Signatures Required from</label>
+    								<table class="table table-striped table-hover">
+    									<tbody>
+    									</tbody>
+    								</table>
+								<br>
+							</div>
+	
+							<div class="hidden verifyData" id="verifyRsDataSegWit">
+				                               	<label>Segwit Address</label>
+   								<div class="row">
+   									<div class="col-lg-6">
+    										<div class="input-group">
+    											<input type="text" class="form-control address segWitAddress" value="" readonly>
+    											<span class="input-group-btn">
+    												<button class="qrcodeBtn btn btn-default" type="button" data-toggle="modal" data-target="#modalQrcode"><span class="glyphicon glyphicon-qrcode"></span></button>
+    											</span>
+    										</div>
+									</div>
+								</div>
+								<br>
+							</div>
+
+							<div class="hidden verifyData" id="verifyRsDataHodl">
+								<label>Hodl Address</label>
+								<div class="row">
+									<div class="col-md-12">
+										<div class="input-group">
+											<input type="text" class="form-control address" value="" readonly>
+											<span class="input-group-btn">
+												<button class="qrcodeBtn btn btn-default" type="button" data-toggle="modal" data-target="#modalQrcode"><span class="glyphicon glyphicon-qrcode"></span></button>
+											</span>
+										</div>
+									</div>
+								</div>
+
+								<label>Required Signature</label>
+								<div class="row">
+									<div class="col-md-12">
+										<div class="input-group">
+											<input type="text" class="form-control address pubkey" value="" readonly>
+											<span class="input-group-btn">
+												<button class="qrcodeBtn btn btn-default" type="button" data-toggle="modal" data-target="#modalQrcode"><span class="glyphicon glyphicon-qrcode"></span></button>
+											</span>
+										</div>
+									</div>
+								</div>
+
+								<label>Unlock Time</label>
+								<div class="row">
+									<div class='col-md-4'>
+										<div class="input-group">
+											<input type="text" class="form-control date" value="" readonly>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="hidden verifyData" id="verifyTransactionData">
+							<h4>Transaction Script</h4>
+							<p><span style="float:right"><a href="" target="_blank" class="verifyLink" title="Link to this page"><span class="glyphicon glyphicon-link"></span></a></span>The above script has been decoded</p>
+							<div><b>Version</b>: <span class="transactionVersion"></span></div>
+							<div><b>Transaction Size</b>: <span class="transactionSize"></span></div>
+							<div><b>Lock time</b>: <span class="transactionLockTime"></span></div>
+							<div class="transactionSegWit"><b>SegWit</b>: True</div>
+							<div class="transactionRBF"><b>RBF</b>: This is a <a href="https://en.bitcoin.it/wiki/Transaction_replacement">replace by fee</a> transaction!</div>
+
+							<hr>
+
+							<label>Inputs</label>
+							<table class="table table-striped table-hover ins">
+								<thead>
+									<tr style="font-weight:bold;">
+										<td><abbr title="the transaction id">Txid</abbr></td><td><abbr title="index id of the the transaction">N</abbr></td><td><abbr title="transaction script">Script</abbr></td><td><abbr title="is input signed?">Signed?</abbr></td><td><abbr title="is transaction a multisig transaction?">MultiSig?</abbr></td>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+
+							<label>Outputs</label>
+							<table class="table table-striped table-hover outs">
+								<thead>
+									<tr style="font-weight:bold;">
+										<td><abbr title="address the funds are being sent to">Address</abbr></td><td><abbr title="the amount the address is being sent">Amount</abbr></td><td><abbr title="the script of the transaction">Script</abbr></td>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+						</div>
+
+
+						<div class="hidden verifyData" id="verifyPrivKey">
+							<h4>WIF key</h4>
+							<p>The above wif key has been decoded</p>
+							<p><b>Address</b>: <input type="text" class="form-control address" readonly></p>
+							<p><b>Public key</b>: <input type="text" class="form-control pubkey" readonly></p>
+							<p><b>Private key</b>: <input type="text" class="form-control privkey" readonly></p>
+							<p><b>Is compressed</b>: <span class="iscompressed"></span></p>
+
+						</div>
+
+						<div class="hidden verifyData" id="verifyPubKey">
+							<h4>Public key</h4>
+							<p><span style="float:right"><a href="" target="_blank" class="verifyLink" title="Link to this page"><span class="glyphicon glyphicon-link"></span></a></span>The above public key has been encoded to its address</p>
+							<p><b>Legacy Address</b>: <input type="text" class="form-control address" readonly></p>
+
+							<div class="hidden verifyDataSw">
+								<hr>
+								<div class="row">
+									<div class="col-md-6">
+										<p><b>P2SH Segwit Address</b>: <input type="text" class="form-control addressSegWit" readonly></p>
+									</div>
+
+									<div class="col-md-6">
+										<p><b>P2SH Segwit Redeem Script</b>: <input type="text" class="form-control addressSegWitRedeemScript" readonly></p>
+									</div>
+								</div>
+
+								<hr>
+								<div class="row">
+									<div class="col-md-6">
+										<p><b>Bech32 Address</b>: <input type="text" class="form-control addressBech32" readonly></p>
+									</div>
+
+									<div class="col-md-6">
+										<p><b>Bech32 Redeem Script</b>: <input type="text" class="form-control addressBech32RedeemScript" readonly></p>
+									</div>
+								</div>
+
+								<br>
+							</div>
+						</div>
+
+						<div class="hidden verifyData" id="verifyHDaddress">
+							<h4>HD Address</h4>
+							<p><span style="float:right"><a href="" target="_blank" class="verifyLink" title="Link to this page"><span class="glyphicon glyphicon-link"></span></a></span>The key <small><span class="hdKey hidden"></span></small> has been decoded</p>
+							<div class="row">
+								<div class="col-md-2">
+									<b>Type</b><br>
+									<span class="key_type"></span>
+								</div>
+
+								<div class="col-md-5">
+									<b>Chain Code</b><br>
+									<input type="text" class="form-control chain_code" value="" readonly>
+								</div>
+
+
+								<div class="col-md-5">
+									<b>Key</b><br>
+									<input type="text" class="form-control hdwifkey" value="" readonly>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-md-3">
+									<b>Version</b><br>
+									<input type="text" class="form-control version" value="" readonly>
+								</div>
+
+								<div class="col-md-3">
+									<b>Parent FingerPrint</b><br>
+									<input type="text" class="form-control parent_fingerprint" value="" readonly>
+								</div>
+
+								<div class="col-md-3">
+									<b>Depth</b><br>
+									<input type="text" class="form-control depth" value="" readonly>
+								</div>
+
+								<div class="col-md-3">
+									<b>Index</b><br>
+									<input type="text" class="form-control child_index" value="" readonly>
+								</div>
+							</div>
+
+							<div class="row">
+							</div>
+
+							<hr>
+
+							<h4>Key Derivation</h4>
+							<p>The path of key derivation</p>
+
+							<div class="row">
+								<div class="col-md-8">
+									<b>Path</b><br>
+									<select class="form-control" id="hdpathtype"">
+										<option value="simple">Simple: m/i</option>
+										<option value="custom">Custom</option>
+									</select>
+
+									<div id="hdpath" class="hidden" style="margin-top:4px">
+										<span class="input-group">
+											<input type="text" class="form-control" value="m/0/1">  <br>
+											<span class="input-group-addon"> / </span>
+										</span>
+									</div>
+								</div>
+
+								<div class="col-md-2">
+									<b><u>I</u>ndex (Start)</b><br>
+									<input type="text" class="form-control derivation_index_start" value="0">
+								</div>
+
+								<div class="col-md-2">
+									<b><u>I</u>ndex (End)</b><br>
+									<input type="text" class="form-control derivation_index_end" value="1">
+								</div>
+
+							</div>
+
+							<hr>
+							<h4>Keys</h4>
+
+							<p>Keys derived from the hd address provided</p>
+
+							<div class="derived_data">
+								<table class="table table-striped table-hover">
+									<thead>
+										<tr><td><b>Index</b></td><td><b>Address</b><td><b>Private Key (WIF)</b></td></td><td><b>Extended xPub</b></td><td><b>Extended xPrv</b></td></tr>
+									</thead>
+									<tbody>
+									</tbody>
+								</table>
+							</div>
+
+							<br>
+						</div>
+
+						<div id="verifyStatus" class="alert alert-danger hidden"><span class="glyphicon glyphicon-exclamation-sign"></span> Unable to decode</div>
+
+						<input type="button" value="Submit" class="btn btn-primary" id="verifyBtn">
+						<br>
+
+					</div>
+
+					<div class="tab-pane tab-content" id="sign">
+						<h2 class="lang" key="Sign Transaction">Sign Transaction</h2> <h5 class="text-success lang" key="Recommended offline">Recommended offline</h5><P class="lang" key="Sign Transaction Info">In order to prevent the private key from being exposed on the network, it is recommended to sign on an Android, IOS or computer device that is not connected to the Internet to realize offline signing.</P>
+						 
+
+						<div class="row">
+							<div class="col-md-12">
+								<label for="signPrivateKey" class="lang" key="Private key" >Private key</label>
+
+								<div class="input-group">
+									<input id="signPrivateKey" type="password" class="form-control" value="">
+									<span class="input-group-btn">
+										<button class="showKey btn btn-default lang" key="Show/Hide" type="button">Show/Hide</button>
+									</span>
+								</div>
+							</div>
+						</div>
+						<br>
+
+						<div class="row">
+							<div class="col-md-12">
+								<textarea type="text" id="signTransaction" class="form-control" placeholder="raw transaction you created,for example:001fje113...." style="height:125px"></textarea>
+
+<!--
+<span class="input-group-btn">
+								<button class="btn btn-info qrcodeScannerSign" type="button" data-toggle="modal" data-target="#modalQrcodeScanner" forward-result="#rawTransaction"><span class="glyphicon glyphicon-camera"></span></button>
+							</span>
+							-->
+								
+
+
+							</div>
+						</div>
+						<br>
+
+						<a href="javascript:;" id="signAdvancedCollapse">
+							<div class="well well-sm lang" key="Advanced Options"><span class="glyphicon glyphicon-collapse-down" ></span>Advanced Options</div>
+						</a>
+
+						<div id="signAdvanced" class="hidden">
+							<div class="row">
+								<div class="col-md-12">
+									<label for="sighashType">Sig Hash Type</label>
+
+									<select id="sighashType" class="form-control">
+										<option value="1" rel="SIGHASH_ALL: Signs all the inputs and outputs, protecting everything against modification.">ALL (default)</option>
+										<option value="2" rel="SIGHASH_NONE: Signs all of the inputs but none of the outputs, allowing anyone to change where the satoshis are going unless other signatures using other signature hash flags protect the outputs.">NONE</option>
+										<option value="3" rel="SIGHASH_SINGLE: The only output signed is the one corresponding to this input, ensuring nobody can change your part of the transaction but allowing other signers to change their part of the transaction.">SINGLE</option>
+										<option value="129" rel="SIGHASH_ALL|SIGHASH_ANYONECANPAY: Signs all of the outputs but only this one input, it allows anyone to add or remove other inputs, so anyone can contribute additional satoshis but they cannot change how many satoshis are sent nor where they go.">ALL|ANYONECANPAY</option>
+										<option value="130" rel="SIGHASH_NONE|SIGHASH_ANYONECANPAY: Signs only this one input and allows anyone to add or remove other inputs or outputs, so anyone who gets a copy of this input can spend it however they'd like.">NONE|ANYONECANPAY</option>
+										<option value="131" rel="SIGHASH_SINGLE|SIGHASH_ANYONECANPAY: Signs this one input and its corresponding output. Allows anyone to add or remove other inputs.">SINGLE|ANYONECANPAY</option>
+									</select>
+								</div>
+							</div>
+
+							<br>
+
+							<div class="alert alert-info" id="sighashTypeInfo">
+								SIGHASH_ALL: The default, signs all the inputs and outputs, protecting everything except the signature scripts against modification.
+							</div>
+						</div>
+
+						<div class="alert alert-danger hidden" id="signedDataError">
+							<span class="glyphicon glyphicon-exclamation-sign"></span> There is a problem with one or more of your inputs, please check and try again
+						</div>
+
+						<div class="alert alert-success hidden" id="signedData">
+							<label class="lang" key="Signed transaction">Signed transaction</label>
+							<button class="qrcodeBtn btn btn-default" type="button" data-toggle="modal" data-target="#modalQrcode" style="float:right;"><span class="glyphicon glyphicon-qrcode"></span></button>
+							<p class="lang" key="The above transaction has been signed:">The above transaction has been signed:</p>
+
+                        				<textarea class="form-control script" style="height:160px" readonly></textarea>
+                                    
+							<p class="text-muted">Size: <span class="txSize">0</span> <i>bytes</i></p>
+						</div>
+
+					<!--<input type="button" value="Sign" class="btn btn-primary" id="signBtn">-->	
+
+
+						<button type="button" class="btn btn-primary lang" key="Sign" id="signBtn">Sign</button>
+
+
+						<br>
+					</div>
+
+					<div class="tab-pane tab-content" id="broadcast">
+						<h2 class="lang" key="Broadcast Your Transaction">Broadcast Your Transaction</h2>
+						<h5 class="text-success lang" key="into the Blockchain!">into the Blockchain!</h5>
+						<a href="#settings" style="float:right;"><span class="glyphicon glyphicon-cog"></span></a>
+						<p class="lang" key="Please enter the signed transaction code:">Please enter the signed transaction code:</p>
+						<textarea class="form-control" style="height:125px" id="rawTransaction"></textarea>
+						<br>
+						<div id="rawTransactionStatus" class="alert hidden">
+						</div>
+
+						<span class="input-group-btn">
+								<button class="btn btn-info qrcodeScannerSign" type="button" data-toggle="modal" data-target="#modalQrcodeScanner" forward-result="#rawTransaction"><span class="glyphicon glyphicon-camera"></span></button>
+							</span>
+
+
+						<!--
+						<input type="button" value="Broadcast" id="rawSubmitBtn" class="btn btn-primary">
+						-->
+
+<button type="button" class="btn btn-primary lang" key="Broadcast" id="rawSubmitBtn">Broadcast</button>
+
+
+						<br>
+					</div>
+
+					<div class="tab-pane tab-content" id="dev">
+						<h2>Development <small>Javascript framework, API and more</small></h2>
+						<div class="alert alert-info">This section is currently under development and is subject to change.</div>
+						
+					</div>
+
+					<div class="tab-pane tab-content" id="about">
+						<h2>About <small>open source bitcoin wallet</small></h2>
+						<p>Version 1.0</p>
+						<p>Compatible with bitcoin core</p>
+						
+						<h3>What is Bitcoin?</h3>
+						<p>Bitcoin is a type of digital currency in which encryption techniques are used to regulate the generation of units of currency and verify the transfer of funds, operating independently of a central bank. 
+						<h3>Information</h3>
+						<p>This is a bitcoin/litecoin/dogecoin online and offline wallet,you can sign your transaction offline,No need to expose your private key to the Internet or other wallets, offline signatures make your wallet 100% safe.</p>
+						<h3>Privacy</h3>
+						<p>We believes strongly in privacy, not only do we support the use of TOR, the site does not collect and store IP or transaction data via our servers nor do we store your bitcoins private key. We do route traffic via cloudflare using an SSL certificate.</p>
+						 
+						<h3>Donate</h3>
+						<p>Please donate to <a href="bitcoin:1GkMoCVKvT7ZcDUGXemhT3CusgE68wiJ66">1GkMoCVKvT7ZcDUGXemhT3CusgE68wiJ66</a> if you found this project useful or want to see more features!</p>
+
+
+
+
+
+					</div>
+
+
+
+
+<div class="tab-pane tab-content" id="IOS">
+
+
+<h2 class="lang" key="Run on iPhone/iPad">Run on iPhone/iPad</h2>
+<br>
+<h4 class="lang" key="on Windows,MAC,Linux,we just run index.html in browser online or offline,it doesnt need any addtional install.">on Windows,MAC,Linux,we just run index.html in browser online or offline,it doesn't need any addtional install.</h4>
+<h4 class="lang" key="You need prepare a MAC computer in order to transfer project files through airpdrop.">You need prepare a MAC computer in order to transfer project files through airpdrop.</h4>
+
+<br>
+<h4 class="lang" key="1.This project is HTML+JS, so we need download a HTML viewer from Appstore.you can also use other html viewer APP in APPStore">1.This project is HTML+JS, so we need download a  HTML viewer from Appstore.you can also use other html viewer APP in APPStore</h4>
+<img src="images/ios/1.png">
+
+<br><br><br>
+<h4 class="lang" key="2.drag project folder to our iPhone/iPad through Airdrop">2.drag project folder to our iPhone/iPad through Airdrop</h4>
+<img src="images/ios/2.png">
+
+<br><br><br>
+<h4 class="lang" key="3.save folder to HTML Viewer">3.save folder to HTML Viewer</h4>
+<img src="images/ios/3.png">
+
+<br><br><br>
+<h4 class="lang" key="4.tab folder icon in HTML Viewer APP">4.tab folder icon in HTML Viewer APP</h4>
+<img src="images/ios/4.png">
+
+<br><br><br>
+<h4 class="lang" key="5.find index.html,and tab it.">5.find index.html,and tab it.</h4>
+<img src="images/ios/5.png">
+
+<br><br><br>
+<h4 class="lang" key="6.Now we can run Signer on our iPhone and iPad Successfully!" >6.Now we can run Signer on our iPhone and iPad Successfully!</h4>
+<h5 class="lang" key="Tips:iPhone camera can directly scan QR codes offline">Tips:iPhone camera can directly scan QR codes offline</h5>
+<img src="images/ios/6.png">
+
+
+<br><br><br>
+<h4  class="lang" key="7.If you want to sign offline, just turn on airplane mode.">7.If you want to sign offline, just turn on airplane mode.</h4>
+
+<img src="images/ios/7.png">
+
+
+<br><br><br>
+<h4  class="lang" key="8.Still worried?turn off the WIFI permit of APP.">8.Still worried?turn off the WIFI permit of APP.</h4>
+
+<img src="images/ios/8.png">
+
+
+</div>
+
+
+
+
+<div class="tab-pane tab-content" id="Tutorial">
+<h2 class="lang" key="How to use">How to use</h2>
+ 
+<p> 
+
+<h4 class="lang" key="Download the project file,unzip,then you can run the index.html locally with any browser on Windows,Linux,MAC OS...">Download the project file,unzip,then you can run the index.html locally with any browser on Windows,Linux,MAC OS...</h4>
+
+<h3 class="lang" key="Choose the cryptocurrency you want to use.">Choose the cryptocurrency you want to use.</h3>
+<img src="images/0.png"><br>
+
+<h3 class="lang" key="1:Create transaction">1:Create transaction</h3>
+<img src="images/1.png"><br>
+<h3 class="lang" key="2:Sign transaction,It is recommended to sign on an offline device.">2:Sign transaction,It is recommended to sign on an offline device.</h3>
+<img src="images/2.png"><br>
+<h3 class="lang" key="3:Broadcast transaction">3:Broadcast transaction</h3>
+<img src="images/3.png"><br>
+</p>
+
+
+</div>
+
+
+					<div class="tab-pane tab-content" id="settings">
+						<h2  class="lang" key="Settings">Settings</h2>
+		 
+
+						<div class="row">
+							<div class="col-md-12">
+								<b>Network</b>: <br>
+								<p class="text-muted">Select which network you'd like to use for key pair generation.</p>
+								<select class="form-control" id="coinjs_coin">
+
+					
+									<option value="bitcoin_mainnet" rel="0x00;0x80;0x05;0x488b21e;0x488ade4;blockcypher_bitcoinmainnet;blockcypher_bitcoinmainnet">Bitcoin (mainnet)</option>
+									<option value="litecoin_mainnet" rel="0x30;0xb0;0x32;0x019da462;0x019d9cfe;blockcypher_litecoin;blockcypher_litecoin">Litecoin (mainnet)</option>
+									<option value="dogecoin_mainnet" rel="0x1e;0x9e;0x16;0x0827421e;0x089944e4;blockcypher_dogecoin;blockcypher_dogecoin">Dogecoin (mainnet)</option>
+									
+									<option value="bitcoin_testnet" rel="0x6f;0xef;0xc4;0x043587cf;0x04358394;false;false">Bitcoin (testnet)</option>
+
+									<option value="custom" rel="0x00;0x80;0x05;0x488b21e;0x488ade4;false;false">Custom</option>
+								</select>
+							</div>
+						</div>
+
+						<div id="settingsCustom" class="hidden">
+
+							<hr>
+
+							<div class="row">
+								<div class="col-md-4">
+									<b>Pub</b>: <br>
+									<input type="text" class="form-control coinjssetting" id="coinjs_pub">
+								</div>
+
+								<div class="col-md-4">
+									<b>Priv</b>: <br>
+									<input type="text" class="form-control coinjssetting" id="coinjs_priv">
+								</div>
+
+								<div class="col-md-4">
+									<b>Script Hash (multisig)</b>: <br>
+									<input type="text" class="form-control coinjssetting" id="coinjs_multisig">
+								</div>
+							</div>
+
+
+							<div class="row">
+								<div class="col-md-6">
+									<b>HD Pub</b>: <br>
+									<input type="text" class="form-control coinjssetting" id="coinjs_hdpub">
+								</div>
+
+								<div class="col-md-6">
+									<b>HD Priv</b>: <br>
+									<input type="text" class="form-control coinjssetting" id="coinjs_hdprv">
+								</div>
+							</div>
+
+							<br>
+
+							<div class="alert alert-info"> <span class="glyphicon glyphicon-info-sign"></span> You will not be able to automatically broadcast or retreive your unspent outputs  when using this setting and will need to use your desktop client instead, however everything else such as creating key pairs, addresses, transaction generation and signing will continue to function normally.</div>
+						</div>
+
+						<hr>
+
+						<div class="row">
+							<div class="col-md-12">
+								<b>Broadcast</b>: <br>
+								<p class="text-muted">Select the network you wish to broadcast the transaction via</p>
+								<select class="form-control" id="coinjs_broadcast">
+
+
+									
+									<option value="blockcypher_bitcoinmainnet"> Blockcypher.com (Bitcoin mainnet)</option>
+									<option value="blockcypher_litecoin"> Blockcypher.com (Litecoin)</option>
+									<option value="blockcypher_dogecoin"> Blockcypher.com (Dogecoin)</option>
+									<option value="blockchair_bitcoinmainnet"> Blockchair.com (Bitcoin mainnet)</option>
+									<option value="blockchair_litecoin"> Blockchair.com (Litecoin)</option>
+									<option value="blockchair_dogecoin"> Blockchair.com (Dogecoin)</option>
+									<option value="chain.so_bitcoinmainnet"> Chain.so (Bitcoin mainnet)</option>
+									<option value="chain.so_litecoin"> Chain.so (Litecoin)</option>
+									<option value="chain.so_dogecoin"> Chain.so (Dogecoin)</option>
+								</select>
+							</div>
+						</div>
+							
+						<hr>
+
+						<div class="row">
+							<div class="col-md-12">
+								<b>Unspent outputs</b>: <br>
+								<p class="text-muted">Select the network you wish to retreive your unspent outputs from</p>
+								<select class="form-control" id="coinjs_utxo">
+
+
+									
+									<option value="blockcypher_bitcoinmainnet"> Blockcypher.com (Bitcoin mainnet)</option>
+									<option value="blockcypher_litecoin"> Blockcypher.com (Litecoin)</option>
+									<option value="blockcypher_dogecoin"> Blockcypher.com (Dogecoin)</option>
+									<option value="blockchair_bitcoinmainnet"> Blockchair.com (Bitcoin mainnet)</option>
+									<option value="blockchair_litecoin"> Blockchair.com (Litecoin)</option>
+									<option value="blockchair_dogecoin"> Blockchair.com (Dogecoin)</option>
+									<option value="chain.so_bitcoinmainnet"> Chain.so (Bitcoin mainnet)</option>
+									<option value="chain.so_litecoin"> Chain.so (Litecoin)</option>
+									<option value="chain.so_dogecoin"> Chain.so (Dogecoin)</option>
+								</select>
+							</div>
+						</div>
+
+						<br>
+
+						<div id="statusSettings" class="hidden alert">
+						</div>
+
+						<input type="submit" class="btn btn-primary" id="settingsBtn">
+
+					</div>
+
+					<br>
+					<p class="text-muted">This page uses javascript to generate your addresses and sign your transactions within your browser, this means we <i>never</i> receive your private keys, this can be independently verified by reviewing the source code on <a href="https://github.com/CryptoDappRun/Bitcoin-Signer-Wallet" target="_blank">github</a>. You can even <a href="https://github.com/CryptoDappRun/Bitcoin-Signer-Wallet">download</a> this page and host it yourself or run it offline!</p>
+					<br>
+
+				</div>
+			</div>
+		</div>
+
+		<div id="footer">
+			<div class="container text-right">
+	        		<p class="text-muted">Version 1</p>
+			</div>
+		</div>
+
+
+	<!-- wallet confirm send modal -->
+	<div class="modal fade" id="modalWalletConfirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Please confirm</h4>
+				</div>
+
+				<div class="modal-body">
+					<p>You are about to send a transaction to the value of <span id="spendAmount">0.00</span> BTC</p>
+
+					<br>
+					<div id="walletSendConfirmStatus" class="alert alert-danger hidden"></div>
+
+					<div id="walletSendFailTransaction" class="alert alert-info hidden">
+						<b>Raw Transaction:</b>
+						<p>Below is a copy of the transaction we tried to submit</p>
+						<textarea class="form-control" readonly></textarea>
+					</div>
+				</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" id="walletConfirmSend">Send</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal" id="confirmClose">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- wallet confirm send modal -->
+
+	<!-- qrcode modal -->
+	<div class="modal fade" id="modalQrcode" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">qrcode</h4>
+				</div>
+
+				<div class="modal-body" align="center">
+					<div id="qrcode"></div>
+				</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal" id="qrCodeClose">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- qrcode modal -->
+
+	<!-- qrcode scanner modal -->
+	<div class="modal fade" id="modalQrcodeScanner" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">qrcode scanner</h4>
+				</div>
+
+				<div class="modal-body" align="center">
+					<select id="videoSource" class="form-control"></select>
+					<div id="videoReaderError" class="hidden">Your browser does not offer camera support</div>
+					<video id="videoReader" muted autoplay style="width:100%;height:100%"></video>
+					<div id="qrcode-scanner-callback-to" class="hidden"></div>
+				</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal" id="qrScanClose">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- qrcode scanner modal -->
+
+	<!-- mediator modal -->
+	<div class="modal fade" id="modalMediator" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title">Transaction Mediation</h4>
+				</div>
+
+				<div class="modal-body">
+					<p>You can add a public key when creating a <i>2-of-3 multi signature address</i> and for a low fee your mediator will help with the recovery of the funds should any disputes arise.</p>
+
+					<p>Should a dispute arise please contact the below address for further information</p>
+					<div class="row">
+						<div class="col-md-5">
+							<label>Mediator:</label>
+
+							<!-- 
+								You need to contact us before adding your pubkey 
+								and submitting a pull request on . 
+
+								format is: pubkey;email;fee
+							-->
+
+							<select id="mediatorList" class="form-control">
+								<option value="02b6231cc602740c29436eafbb6448880f4058cc3d2745c709deee313104678277;support@signer.wallet;1">Signer</option>
+							</select>
+						</div>
+
+						<div class="col-md-5">
+							<label>Address:</label> <span class="text-muted">(for disputes)</span>
+							<input id="mediatorEmail" type="text" class="form-control address" value="" readonly>	
+						</div>
+
+						<div class="col-md-2">
+							<label>Fee (%):</label> 
+							<input id="mediatorFee" type="text" class="form-control address" value="" readonly>	
+						</div>
+
+					</div>
+					<br>
+
+					<label>Public Key:</label>
+					<input id="mediatorPubkey" type="text" class="form-control address" value="" readonly>
+					<br>
+				</div>
+
+				<div class="modal-footer">
+					<button class="btn btn-primary" type="button" id="mediatorAddKey">Add Public Key</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal" id="mediatorClose">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- mediator modal -->
+
+
+	<!-- warning (fee) modal -->
+	<div class="modal fade" id="modalWarningFee" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title"><b>Warning High Fee!</b></h4>
+				</div>
+
+				<div class="modal-body">
+					Please be aware that you have created a transaction with what seems to be a very high fee of <span id="modalWarningFeeAmount"></span> BTC!
+				</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal" id="warningFeeClose">OK, I've got it!</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- warning (fee) modal -->
+
+	<div class="hidden" id="entropybucket"></div>
+	</body>
+</html>
+
+
